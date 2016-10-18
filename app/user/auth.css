@@ -1,0 +1,24 @@
+.auth .form-auth {
+  max-width: 450px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.auth .form-auth .form-auth-heading,
+.auth .form-auth .checkbox {
+  margin-bottom: 10px;
+}
+.auth .form-auth .checkbox {
+  font-weight: normal;
+}
+.auth .form-auth .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.auth .form-auth .form-control:focus {
+  z-index: 2;
+}
