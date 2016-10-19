@@ -15,4 +15,4 @@ angular.module('myApp.user', [])
     controller: 'myApp.user.signIn',
     controllerAs: 'signIn'
   });
-}])
+}]);
