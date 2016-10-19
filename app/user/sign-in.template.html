@@ -1,17 +1,26 @@
 <div class="container auth">
-  <form class="form-auth" ng-submit="signIn.submitSignInForm()">
+  <form class="form-auth" id="sign-in-form" ng-submit="signIn.submitSignInForm()" novalidate>
     <h2 class="form-auth-heading">Sign in</h2>
     <br>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <br>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+    <div class="form-group">
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <div class="help-block with-errors"></div>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div class="form-group">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required data-minlength="6" data-error="密码长度至少为 6 位">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </div>
   </form>
 </div> <!-- /container -->

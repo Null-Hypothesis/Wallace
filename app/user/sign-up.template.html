@@ -1,16 +1,26 @@
 <div class="container auth">
-  <form class="form-auth" ng-submit="signUp.submitSignUpForm()">
+
+  <form class="form-auth" id="sign-up-form" ng-submit="signUp.submitSignUpForm()" novalidate>
     <h2 class="form-auth-heading">Sign up</h2>
     <br>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus ng-model="signUp.user.email">
-    <br>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="signUp.user.password">
-    <br>
-    <label for="confirmPassword" class="sr-only">Confirm Password</label>
-    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required ng-model="signUp.user.confirmPassword" compare-to="signUp.user.password">
-    <br>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <div class="form-group">
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus data-error="E-mail 地址不合法" ng-model="signUp.user.email">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="signUp.user.password" data-minlength="6" data-error="密码长度至少为 6 位">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword" class="sr-only">Confirm Password</label>
+      <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required ng-model="signUp.user.confirmPassword" data-match="#inputPassword" data-match-error="密码不一致">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </div>
   </form>
+
 </div> <!-- /container -->
