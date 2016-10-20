@@ -1,7 +1,7 @@
 'use strict';
 
 // Define the `user` module
-angular.module('myApp.user', [])
+angular.module('myApp.user', ['myApp.navBar'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -14,5 +14,9 @@ angular.module('myApp.user', [])
     templateUrl: 'user/sign-in.template.html',
     controller: 'myApp.user.signIn',
     controllerAs: 'signIn'
+  })
+  .when('/log-out', {
+    templateUrl: 'user/log-out.template.html',
+    controller: 'myApp.user.logOut'
   });
 }]);

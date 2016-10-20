@@ -13,9 +13,13 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>  
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" ng-show="!$root.user">
         <li><a href="#!/sign-in">Sign in</a></li>
         <li><a href="#!/sign-up">Sign up</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" ng-show="$root.user">
+        <li><a>Welcome {{$root.user.email}}!</a></li>
+        <li><a href="#!/log-out">Log out</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
