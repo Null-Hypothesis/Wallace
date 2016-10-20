@@ -2,8 +2,8 @@
 
 angular.module('myApp.user')
 
-.controller('myApp.user.signIn', ['$http', '$location', '$rootScope', '$timeout',
-function($http, $location, $rootScope, $timeout) {
+.controller('myApp.user.signIn', ['$http', '$location', '$rootScope', '$timeout', 'myApp.user.userService',
+function($http, $location, $rootScope, $timeout, userService) {
   this.user = {};
 
   $('#sign-in-form').validator();
@@ -18,6 +18,7 @@ function($http, $location, $rootScope, $timeout) {
       }
     }).then(function successCallback(response) {
       $rootScope.user = response.data;
+      userService.setUserStatus(response.data);
       $('#sign-in-success-modal').modal('show');
       $timeout(function() {
         $('#sign-in-success-modal').modal('hide');
