@@ -8,6 +8,6 @@ function($routeProvider) {
   .when('/home-page', {
     templateUrl: 'home-page/home-page.template.html',
     controller: 'myApp.homePage.controller',
-    controllerAd: 'homePage'
+    controllerAs: 'homePage'
   });
 }]);
