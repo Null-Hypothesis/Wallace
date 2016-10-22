@@ -26,18 +26,11 @@
 				</li>
 				<li class="Dropdown-separator">					
 				</li>
-				<li class="item-tag12">
+				<li class="item-tag12" ng-repeat="courseTag in homePage.courseTags">
 					<a class="TagLinkButton hasIcon " href="#" style="" title="与本站相关的一切事情">
 					<span class="icon TagIcon Button-icon" style="background-color: rgb(0, 160, 232);">						
 					</span>
-					计算机与科学
-					</a>
-				</li>
-				<li class="item-tag12">
-					<a class="TagLinkButton hasIcon " href="#" style="" title="与本站相关的一切事情">
-					<span class="icon TagIcon Button-icon" style="background-color: rgb(0, 123, 252);">						
-					</span>
-					举个例子
+					 {{courseTag.name}}
 					</a>
 				</li>
 			</ul>
