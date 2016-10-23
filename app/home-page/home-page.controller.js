@@ -82,6 +82,5 @@ function ($rootScope, courseTagsService, coursesService, postTagsService, postsS
     self.courseStyle = '';
     self.postStyle = 'display:none';
     self.posts = $rootScope.posts;
-    console.log($rootScope.courseTags);
   };
 }]);

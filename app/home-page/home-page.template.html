@@ -73,8 +73,11 @@
                   {{post.title}}
                 </h3>
                 <h5>
-                  by {{post.user.name}}
+                  {{$root.id2course[post.courseId].name}}
                 </h5>
+                <h6>
+                  by {{post.user.name}}
+                </h6>
                 <ul class="DiscussionListItem-info">
                   <li class="item-tags">
                     <span class="TagsLabel ">
