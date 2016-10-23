@@ -1,0 +1,31 @@
+
+[
+  {
+    "id": 1,
+    "stars": 5,
+    "title": "Discussion 1",
+    "comment": "Some texts",
+    "createdAt": "2016-08-05T08:40:51.620Z",
+    "updatedAt": "2016-08-05T08:40:51.620Z",
+    "courseId": 1,
+    "user": {
+        "id": 1,
+        "name": "user1"
+    },
+    "postTagIds": [1, 2]
+  },
+  {
+    "id": 2,
+    "stars": 5,
+    "title": "Discussion 2",
+    "comment": "Some texts of discussion 2",
+    "createdAt": "2016-08-05T08:40:51.620Z",
+    "updatedAt": "2016-08-05T08:40:51.620Z",
+    "courseId": 2,
+    "user": {
+        "id": 1,
+        "name": "user2"
+    },
+    "postTagIds": [1, 2]
+  }
+]

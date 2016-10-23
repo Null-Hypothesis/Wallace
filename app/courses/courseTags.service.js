@@ -2,8 +2,8 @@
 
 angular.module('myApp.courses')
 
-.factory('myApp.courses.courseTagsService', ['$http',
-function($http) {
+.factory('myApp.courses.courseTagsService', ['$http', '$rootScope',
+function($http, $rootScope) {
   var service = {};
 
   service.listAllCourseTags = function() {
@@ -14,6 +14,7 @@ function($http) {
       url: apiUrls.courseTags, 
     }).then(function successCallback(response) {
       Array.prototype.push.apply(courseTags, response.data);
+      $rootScope.$broadcast('Course tags loaded', courseTags);
     }, function errorCallback() {
       //
     });

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Software Engineering",
+    "courseId": "COMP130112.01",
+    "description": "Some texts",
+    "createdAt": "2016-08-05T08:40:51.620Z",
+    "updatedAt": "2016-08-05T08:40:51.620Z",
+    "teacherId": 1,
+    "courseTagIds": [1, 2]
+  },
+  {
+    "id": 2,
+    "name": "Network",
+    "courseId": "COMP130017.01",
+    "description": "Network",
+    "createdAt": "2016-08-05T08:40:51.620Z",
+    "updatedAt": "2016-08-05T08:40:51.620Z",
+    "teacherId": 1,
+    "courseTagIds": [1]
+  }
+]

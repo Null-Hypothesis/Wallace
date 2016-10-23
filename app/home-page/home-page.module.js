@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('myApp.homePage', [
-  'myApp.courses'
+  'myApp.courses',
+  'myApp.posts'
 ])
 
 .config(['$routeProvider',

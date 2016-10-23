@@ -2,8 +2,8 @@
 
 angular.module('myApp.courses')
 
-.factory('myApp.courses.coursesService', ['$http',
-function($http) {
+.factory('myApp.courses.coursesService', ['$http', '$rootScope',
+function($http, $rootScope) {
   var service = {};
 
   service.listAllCourses = function() {
@@ -14,6 +14,7 @@ function($http) {
       url: apiUrls.courses, 
     }).then(function successCallback(response) {
       Array.prototype.push.apply(courses, response.data);
+      $rootScope.$broadcast('Courses loaded', courses);
     }, function errorCallback(error) {
       //
     });
@@ -80,7 +81,7 @@ function($http) {
     });
 
     return course;
-  }
+  } 
 
   return service;
 }]);

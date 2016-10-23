@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('myApp.posts')
-.factory('myApp.posts.postsService', ['$http'
-function ($http) {
+.factory('myApp.posts.postsService', ['$http', '$rootScope',
+function ($http, $rootScope) {
   var service = {};
 
   service.listAllPosts = function() {
@@ -13,6 +13,7 @@ function ($http) {
       url: apiUrls.posts
     }).then(function successCallback(response) {
       Array.prototype.push.apply(posts, response.data);
+      $rootScope.$broadcast('Posts loaded', posts);
     }, function errorCallback(error) {
       //
     });

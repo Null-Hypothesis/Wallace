@@ -1,59 +1,92 @@
 <header class="Hero TagHero TagHero--colored" style="color: rgb(255, 255, 255); background-color: rgb(155, 163, 104);">
-	<div class="container">
-	<div class="containerNarrow">
-		<h2 class="Hero-title" align="center">二模课程</h2>
-		<div class="Hero-subtitle" align="center">第一哲学沉思集</div>
-	</div>
-	</div>
+  <div class="container">
+  <div class="containerNarrow">
+    <h2 class="Hero-title" align="center">{{homePage.categoryTitle}}</h2>
+    <div class="Hero-subtitle" align="center">{{homePage.courseTitle}}</div>
+  </div>
+  </div>
 </header>
 <div class="container">
-	<nav class="IndexPage-nav sideNav">
-		<ul>
-			<li class="item-newDiscussion App-primaryControl">
-				<button class="Button Button--primary IndexPage-newDiscussion hasIcon" itemclassname="App-primaryControl" type="button" style="background-color: rgb(155, 163, 104);">
-					<span class="Button-label">新建课程</span>
-				</button>
-			</li>
-			<li class="item-nav">
-			<div class="ButtonGroup Dropdown dropdown App-titleControl Dropdown--select itemCount13">
-			<ul class="Dropdown-menu dropdown-menu ">
-				<li class="item-tags">
-					<a href="/tags" active="false" class=" hasIcon" type="button">
-						<i class="icon fa fa-fw fa-th-large Button-icon">							
-						</i>
-						<span class="Button-label">Tags</span>
-					</a>
-				</li>
-				<li class="Dropdown-separator">					
-				</li>
-				<li class="item-tag12" ng-repeat="courseTag in homePage.courseTags">
-					<a class="TagLinkButton hasIcon " href="#" style="" title="与本站相关的一切事情">
-					<span class="icon TagIcon Button-icon" style="background-color: rgb(0, 160, 232);">						
-					</span>
-					 {{courseTag.name}}
-					</a>
-				</li>
-			</ul>
-			</div>
-			</li>
-		</ul>
-	</nav>
-	<div class="IndexPage-results sideNavOffset">
- 		<div class="DiscussionListItem">
-   			<a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled"><i class="icon fa fa-fw fa-check "></i></a>
-   		<div class="DiscussionListItem-content Slidable-content">
-    		<a href="/u/ftiasch" class="DiscussionListItem-author" title="" data-original-title="ftiasch started a day ago"><img class="Avatar " src="https://async.icpc-camp.org/assets/avatars/8c38e72064f8beda857235028503abbb.png" /></a>
-    		<ul class="DiscussionListItem-badges badges">
-     			<li class="item-sticky"><span class="Badge Badge--sticky " title="" data-original-title="Sticky"><i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i></span></li> 
-    		</ul>
-    		<a href="/d/601-2016" class="DiscussionListItem-main"><h3 class="DiscussionListItem-title">第一哲学沉思集第一次讨论课</h3>
-     		<ul class="DiscussionListItem-info">
-      			<li class="item-tags"><span class="TagsLabel "><span class="TagLabel "><span class="TagLabel-text">动态</span></span><span class="TagLabel  colored" style="color: rgb(242, 194, 190); background-color: rgb(242, 194, 190);"><span class="TagLabel-text">分享</span></span></span></li> 
-      			<li class="item-terminalPost"><span><i class="icon fa fa-fw fa-reply "></i> <span class="username">xiaojudou</span> replied <time pubdate="true" datetime="2016-10-20T21:32:03+08:00" title="Thursday, October 20, 2016 9:32 PM" data-humantime="true">a day ago</time></span></li> 
-      			<li class="item-excerpt"><span>简要文本</span></li> 
-     		</ul>
-     		</a>
-    		<span class="DiscussionListItem-count" title="">1</span>
-   		</div>
-	</div>
+  <nav class="IndexPage-nav sideNav">
+    <ul>
+      <li class="item-newDiscussion App-primaryControl">
+        <button class="Button Button--primary IndexPage-newDiscussion hasIcon" itemclassname="App-primaryControl" type="button" style="background-color: rgb(155, 163, 104);">
+          <span class="Button-label">新建课程</span>
+        </button>
+      </li>
+      <li class="item-nav">
+      <div class="ButtonGroup Dropdown dropdown App-titleControl Dropdown--select itemCount13">
+      <ul class="Dropdown-menu dropdown-menu ">
+        <li class="item-tags">
+          <a href="#" active="false" class=" hasIcon" type="button">
+            <i class="icon fa fa-fw fa-th-large Button-icon">              
+            </i>
+            <span class="Button-label">Tags</span>
+          </a>
+        </li>
+        <li class="Dropdown-separator">          
+        </li>
+        <li class="item-tag">
+          <a class="TagLinkButton hasIcon " style="" title="" ng-click="homePage.clearCategory()">
+          <span class="icon TagIcon Button-icon" style="background-color: rgb(0, 160, 232);"></span>
+           所有讨论
+          </a>
+        </li>
+        <li class="item-tag" ng-repeat="category in homePage.categories">
+          <a class="TagLinkButton hasIcon " style="" title="{{category.name}}" ng-click="homePage.setCategory(category)">
+          <span class="icon TagIcon Button-icon" style="background-color: rgb(0, 160, 232);"></span>
+           {{category.name}}
+          </a>
+          <ul class="Dropdown-menu dropdown-menu" ng-show="homePage.isCategory(category)">
+            <li class="item-tag" ng-repeat="course in category.courses">
+              <a class="TagLinkButton hasIcon child" style="" title="" ng-click="homePage.setCourse(course)">
+                <span class="icon TagIcon Button-icon"></span>
+                {{course.name}}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+      </li>
+    </ul>
+  </nav>
+  <div class="IndexPage-results sideNavOffset">
+    <div class="DiscussionList">
+      <ul class="DiscussionList-discussions">
+        <li ng-repeat="post in homePage.posts">
+          <div class="DiscussionListItem">
+            <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled"><i class="icon fa fa-fw fa-check "></i></a>
+            <div class="DiscussionListItem-content Slidable-content">
+              <!--<a href="/u/ftiasch" class="DiscussionListItem-author" title="" data-original-title="ftiasch started a day ago"><img class="Avatar " src="https://async.icpc-camp.org/assets/avatars/8c38e72064f8beda857235028503abbb.png" /></a>
+              <ul class="DiscussionListItem-badges badges">
+                 <li class="item-sticky"><span class="Badge Badge--sticky " title="" data-original-title="Sticky"><i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i></span></li> 
+              </ul>-->
+              <a href="" class="DiscussionListItem-main">
+                <h3 class="DiscussionListItem-title">
+                  {{post.title}}
+                </h3>
+                <h5>
+                  by {{post.user.name}}
+                </h5>
+                <ul class="DiscussionListItem-info">
+                  <li class="item-tags">
+                    <span class="TagsLabel ">
+                      <span class="TagLabel  colored" ng-repeat="postTagId in post.postTagIds" style="color: rgb(242, 194, 190); background-color: rgb(242, 194, 190);">
+                        <span class="TagLabel-text">
+                          {{$root.id2postTag[postTagId].name}}
+                        </span>
+                      </span>
+                    </span>
+                  </li> 
+                  <li class="item-terminalPost"><span><i class="icon fa fa-fw fa-reply "></i> <span class="username"></span> replied <time pubdate="true" datetime="{{post.updatedAt}}" title="{{post.updatedAt | date}}" data-humantime="true" >{{post.updatedAt | date}}</time></span></li> 
+                  <li class="item-excerpt"><span>{{post.comment}}</span></li> 
+                </ul>
+              </a>
+              <span class="DiscussionListItem-count" title="">1</span>
+            </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
