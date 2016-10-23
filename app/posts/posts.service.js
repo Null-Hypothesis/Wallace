@@ -82,5 +82,24 @@ function ($http, $rootScope) {
     return post;
   }
 
+  service.getPostById = function(id) {
+    var post = {};
+
+    $http({
+      method: 'GET',
+      url: apiUrls.posts
+    }).then(function successCallback(response) {
+      for (var rPost of response.data) {
+        if (rPost.id === id) {
+          Object.assign(post, rPost);
+        }
+      }
+    }, function errorCallback(error) {
+      //
+    });
+
+    return post;
+  }
+
   return service;
 }]);

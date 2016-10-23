@@ -12,7 +12,6 @@ function ($rootScope, courseTagsService, coursesService, postTagsService, postsS
   self.currentCategory = undefined;
   self.currentCourse = undefined;
 
-
   $rootScope.$on('Course tags loaded', function(event, courseTags) {
     $rootScope.id2courseTag = buildIndex(courseTags);
   });
