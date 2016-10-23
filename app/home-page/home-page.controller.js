@@ -11,6 +11,8 @@ function ($rootScope, courseTagsService, coursesService, postTagsService, postsS
   self.courseTitle = undefined;
   self.currentCategory = undefined;
   self.currentCourse = undefined;
+  self.courseStyle = '';
+  self.postStyle = 'display:none';
 
 
   $rootScope.$on('Course tags loaded', function(event, courseTags) {
@@ -63,6 +65,8 @@ function ($rootScope, courseTagsService, coursesService, postTagsService, postsS
     self.currentCourse = course.id;
     self.courseTitle = course.name;
     self.posts = [];
+    self.courseStyle = 'display:none';
+    self.postStyle = '';
     for (var post of $rootScope.posts) {
       if (post.courseId === course.id) {
         self.posts.push(post);
@@ -75,6 +79,8 @@ function ($rootScope, courseTagsService, coursesService, postTagsService, postsS
     self.currentCourse = undefined;
     self.categoryTitle = '最新讨论';
     self.courseTitle = undefined;
+    self.courseStyle = '';
+    self.postStyle = 'display:none';
     self.posts = $rootScope.posts;
     console.log($rootScope.courseTags);
   };
