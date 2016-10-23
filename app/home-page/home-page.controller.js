@@ -76,6 +76,5 @@ function ($rootScope, courseTagsService, coursesService, postTagsService, postsS
     self.categoryTitle = '最新讨论';
     self.courseTitle = undefined;
     self.posts = $rootScope.posts;
-    console.log($rootScope.courseTags);
   };
 }]);
