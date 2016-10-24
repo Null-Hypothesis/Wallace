@@ -7,3 +7,7 @@ this.buildIndex = function(arr) {
   }
   return result;
 }
+
+this.firstCharUpperCase = function(str) {
+  return str1[0].toUpperCase();
+}

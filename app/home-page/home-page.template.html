@@ -65,7 +65,9 @@
             <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled"><i class="icon fa fa-fw fa-check "></i></a>
             <div class="DiscussionListItem-content Slidable-content">
               <a href="" class="DiscussionListItem-author" title="">
-                <span class="Avatar" style="background: rgb(196, 160, 229);">D</span>
+                <span class="Avatar" style="background: rgb(196, 160, 229);">
+                  {{homePage.firstCharUpperCase(post.user.name)}}
+                </span>
               </a>
               <!--<a href="/u/ftiasch" class="DiscussionListItem-author" title="" data-original-title="ftiasch started a day ago"><img class="Avatar " src="https://async.icpc-camp.org/assets/avatars/8c38e72064f8beda857235028503abbb.png" /></a>
               <ul class="DiscussionListItem-badges badges">
@@ -123,12 +125,12 @@
             <input type='text' id='courseId' class="form-control">
           </div>
           <div class="form-group">
-            <label>description</label>
-            <input type='text' id='description' class="form-control">
-          </div>
-          <div class="form-group">
             <label>teacherId</label>
             <input type='text' id='teacherId' class="form-control">
+          </div>
+          <div class="form-group">
+            <label>description</label>
+            <input type='text' id='description' class="form-control">
           </div>
           <div class="form-group">
             <label>courseTagIds</label>

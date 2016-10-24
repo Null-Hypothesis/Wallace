@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('myApp.posts', [])
+angular.module('myApp.posts', [
+  'myApp.core'
+])
 
 .config(['$routeProvider',
 function($routeProvider) {

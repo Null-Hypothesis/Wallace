@@ -2,9 +2,8 @@
 
 angular.module('myApp.homePage')
 
-.controller('myApp.homePage.controller', ['$rootScope', 'myApp.courses.courseTagsService',
-  'myApp.courses.coursesService', 'myApp.posts.postTagsService', 'myApp.posts.postsService',
-function ($rootScope, courseTagsService, coursesService, postTagsService, postsService) {
+.controller('myApp.homePage.controller', ['$rootScope', 'myApp.core.service',
+function ($rootScope, coreService) {
   var self = this;
 
   self.categoryTitle = '最新讨论';
@@ -14,25 +13,9 @@ function ($rootScope, courseTagsService, coursesService, postTagsService, postsS
   self.courseStyle = '';
   self.postStyle = 'display:none';
 
-  $rootScope.$on('Course tags loaded', function(event, courseTags) {
-    $rootScope.id2courseTag = buildIndex(courseTags);
-  });
-  $rootScope.courseTags = courseTagsService.listAllCourseTags();
+  coreService.loadAll();
 
-  $rootScope.$on('Post tags loaded', function(event, postTags) {
-    $rootScope.id2postTag = buildIndex(postTags);
-  });
-  $rootScope.postTags = postTagsService.listAllPostTags();
-  
-  $rootScope.$on('Courses loaded', function(event, courses) {
-    $rootScope.id2course = buildIndex(courses);
-  });
-  $rootScope.courses = coursesService.listAllCourses();
-
-  $rootScope.$on('Posts loaded', function(event, posts) {
-    $rootScope.id2post = buildIndex(posts);
-  });
-  $rootScope.posts = postsService.listAllPosts();
+  self.firstCharUpperCase = coreService.firstCharUpperCase;
 
   self.categories = $rootScope.courseTags;
   self.posts = $rootScope.posts;

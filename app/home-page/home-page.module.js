@@ -2,7 +2,8 @@
 
 angular.module('myApp.homePage', [
   'myApp.courses',
-  'myApp.posts'
+  'myApp.posts',
+  'myApp.core'
 ])
 
 .config(['$routeProvider',
