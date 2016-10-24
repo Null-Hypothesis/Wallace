@@ -15,6 +15,9 @@ function($rootScope, courseTagsService, coursesService, postTagsService, postsSe
   };
 
   service.firstCharUpperCase = function(name) {
+    if (!name) {
+      return "";
+    }
     return name[0].toUpperCase();
   };
 

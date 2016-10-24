@@ -7,6 +7,8 @@ angular.module('myApp.posts')
 function($routeParams, $rootScope, $sce, coreService, postsService) {
   var self = this;
 
+  self.firstCharUpperCase = coreService.firstCharUpperCase;
+
   coreService.loadAll();
 
   self.postId = parseInt($routeParams.postId);
