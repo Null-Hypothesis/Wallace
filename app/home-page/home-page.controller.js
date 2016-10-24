@@ -6,7 +6,7 @@ angular.module('myApp.homePage')
 function ($rootScope, coreService) {
   var self = this;
 
-  self.categoryTitle = '最新讨论';
+  self.categoryTitle = 'Latest Discussion';
   self.courseTitle = undefined;
   self.currentCategory = undefined;
   self.currentCourse = undefined;
@@ -59,7 +59,7 @@ function ($rootScope, coreService) {
   self.clearCategory = function() {
     self.currentCategory = undefined;
     self.currentCourse = undefined;
-    self.categoryTitle = '最新讨论';
+    self.categoryTitle = 'Latest Discussion';
     self.courseTitle = undefined;
     self.courseStyle = '';
     self.postStyle = 'display:none';

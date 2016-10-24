@@ -6,7 +6,7 @@ angular.module('myApp.navBar').
 component('navBar', {
   templateUrl: 'nav-bar/nav-bar.template.html',
   controller: ['$rootScope',
-    function NavBarController($rootScope) {
+    function navBarController($rootScope) {
 
     }]
 });

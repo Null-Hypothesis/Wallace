@@ -9,13 +9,23 @@
       <div class="help-block with-errors"></div>
     </div>
     <div class="form-group">
+      <label for="inputName" class="sr-only">Nick Name</label>
+      <input type="text" id="inputName" class="form-control" placeholder="Nick name" required autofocus data-error="请填写昵称" ng-model="signUp.user.name">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="signUp.user.password" data-minlength="6" data-error="密码长度至少为 6 位">
       <div class="help-block with-errors"></div>
     </div>
     <div class="form-group">
-      <label for="confirmPassword" class="sr-only">Confirm Password</label>
-      <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required ng-model="signUp.user.confirmPassword" data-match="#inputPassword" data-match-error="密码不一致">
+      <label for="confirmPassword" class="sr-only">Confirm password</label>
+      <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required ng-model="signUp.user.confirmPassword" data-match="#inputPassword" data-match-error="密码不一致">
+      <div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group">
+      <label for="inputDescription" class="sr-only">Self description</label>
+      <textarea type="text" id="inputDescription" class="form-control" placeholder="Self description" ng-model="signUp.user.description"></textarea>
       <div class="help-block with-errors"></div>
     </div>
     <div class="form-group">

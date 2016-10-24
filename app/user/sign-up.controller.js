@@ -8,7 +8,6 @@ function($http, $location, $timeout) {
 
   $('#sign-up-form').validator();
 
-  console.log(apiUrls.signUp);
   this.submitSignUpForm = function() {
     if (this.user.password === this.user.confirmPassword) {
       $http({
@@ -17,7 +16,9 @@ function($http, $location, $timeout) {
         data: {
           email: this.user.email,
           password: this.user.password,
-          password_confirmation: this.user.confirmPassword
+          password_confirmation: this.user.confirmPassword,
+          name: this.user.name,
+          description: this.user.description
         }
       }).then(function successCallback(response) {
         $('#sign-up-success-modal').modal('show');

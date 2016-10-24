@@ -87,13 +87,9 @@ function ($http, $rootScope) {
 
     $http({
       method: 'GET',
-      url: apiUrls.posts
+      url: apiUrls.posts + '/' + id
     }).then(function successCallback(response) {
-      for (var rPost of response.data) {
-        if (rPost.id === id) {
-          Object.assign(post, rPost);
-        }
-      }
+      Object.assign(post, response.data);
     }, function errorCallback(error) {
       //
     });

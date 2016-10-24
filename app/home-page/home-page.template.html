@@ -12,12 +12,12 @@
     <ul>
       <li class="item-newDiscussion App-primaryControl" style="{{homePage.courseStyle}}">        
         <button class="Button Button--primary IndexPage-newDiscussion hasIcon" itemclassname="App-primaryControl" type="button" style="background-color: rgb(0, 160, 232);" href='#create_course' data-toggle='modal'>
-          <span class="Button-label">新建课程</span>
+          <span class="Button-label">New course</span>
         </button>
       </li>
         <li class="item-newDiscussion App-primaryControl" style="{{homePage.postStyle}}">        
         <button class="Button Button--primary IndexPage-newDiscussion hasIcon" itemclassname="App-primaryControl" type="button" style="background-color: rgb(0, 160, 232);" href='#create_post' data-toggle='modal'>
-          <span class="Button-label">新建讨论</span>
+          <span class="Button-label">New discussion</span>
         </button>
       </li>
       <li class="item-nav">
@@ -35,7 +35,7 @@
         <li class="item-tag">
           <a class="TagLinkButton hasIcon " style="" title="" ng-click="homePage.clearCategory()">
           <span class="icon TagIcon Button-icon" style="background-color: rgb(0, 160, 232);"></span>
-           所有讨论
+           All discussion
           </a>
         </li>
         <li class="item-tag" ng-repeat="category in homePage.categories">
@@ -104,46 +104,8 @@
     </ul>
   </div>
 </div>
-<!-- Modal -->
-<div id="create_course" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<new-course></new-course>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">新建课程</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label>课程名称 </label>
-            <input type='text' id='name' class="form-control">
-          </div>
-          <div class="form-group">
-            <label>courseId</label>
-            <input type='text' id='courseId' class="form-control">
-          </div>
-          <div class="form-group">
-            <label>teacherId</label>
-            <input type='text' id='teacherId' class="form-control">
-          </div>
-          <div class="form-group">
-            <label>description</label>
-            <input type='text' id='description' class="form-control">
-          </div>
-          <div class="form-group">
-            <label>courseTagIds</label>
-            <input type='text' id='courseTagIds' class="form-control">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 <div id="create_post" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -151,7 +113,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">新建讨论</h4>
+        <h4 class="modal-title">New discussion</h4>
       </div>
       <div class="modal-body">
         <form>
