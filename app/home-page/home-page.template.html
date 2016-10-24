@@ -64,11 +64,14 @@
           <div class="DiscussionListItem">
             <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled"><i class="icon fa fa-fw fa-check "></i></a>
             <div class="DiscussionListItem-content Slidable-content">
+              <a href="" class="DiscussionListItem-author" title="">
+                <span class="Avatar" style="background: rgb(196, 160, 229);">D</span>
+              </a>
               <!--<a href="/u/ftiasch" class="DiscussionListItem-author" title="" data-original-title="ftiasch started a day ago"><img class="Avatar " src="https://async.icpc-camp.org/assets/avatars/8c38e72064f8beda857235028503abbb.png" /></a>
               <ul class="DiscussionListItem-badges badges">
                  <li class="item-sticky"><span class="Badge Badge--sticky " title="" data-original-title="Sticky"><i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i></span></li> 
               </ul>-->
-              <a href="" class="DiscussionListItem-main">
+              <a href="#!/view-post/{{post.id}}" class="DiscussionListItem-main">
                 <h3 class="DiscussionListItem-title">
                   {{post.title}}
                 </h3>
@@ -88,7 +91,7 @@
                       </span>
                     </span>
                   </li> 
-                  <li class="item-terminalPost"><span><i class="icon fa fa-fw fa-reply "></i> <span class="username"></span> replied <time pubdate="true" datetime="{{post.updatedAt}}" title="{{post.updatedAt | date}}" data-humantime="true" >{{post.updatedAt | date}}</time></span></li> 
+                  <li class="item-terminalPost"><span><i class="icon fa fa-fw fa-reply "></i> <span class="username"></span> updated <time pubdate="true" datetime="{{post.updatedAt}}" title="{{post.updatedAt | date}}" data-humantime="true" >{{post.updatedAt | date}}</time></span></li> 
                   <li class="item-excerpt"><span>{{post.comment}}</span></li> 
                 </ul>
               </a>

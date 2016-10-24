@@ -2,21 +2,94 @@
   <div class="container">
     <div class="containerNarrow">
       <h4 class="item-tags" align="center">
-        <span class="TagsLabel">
-          <a class="TagLabel colored" style="color: rgb(95, 128, 163); background-color: rgb(95, 128, 163);">
-            <span class="TagLabel-text">题目</span>
-          </a>
+        <span class="TagsLabel" 
+        ng-repeat="courseTag in $root.id2course[viewPost.post.courseId].courseTagIds">
+          <span class="TagLabel colored" style="color: rgb(95, 128, 163); background-color: rgb(95, 128, 163);">
+            <span class="TagLabel-text" >{{$root.id2courseTag[courseTag].name}}</span>
+          </span>
         </span>
         <span class="TagLabel-text">{{$root.id2course[viewPost.post.courseId].name}}</span>  
       </h4>
       <h2 class="Hero-title" align="center">
         {{viewPost.post.title}}
       </h2>
+      <h4 class="item-tags" align="center">
+        <span class="TagsLabel" 
+          ng-repeat="postTag in viewPost.post.postTagIds">
+            <span class="TagLabel colored" style="color: rgb(95, 128, 163); background-color: rgb(95, 128, 163);">
+              <span class="TagLabel-text" >{{$root.id2postTag[postTag].name}}</span>
+            </span>
+          </span>
+      </h4>
     </div>
   </div>
 </header>
 
 <div class="container">
-</div>
 
-{{viewPost.post}}
+  <div class="DiscussionPage-stream">
+    <div class="PostStream">
+      <div class="PostStream-item" data-index="0" data-time="2016-10-21T13:31:40.000Z" data-number="1" data-id="4615" data-type="comment" style="display: block;">
+        <article class="Post CommentPost Post--edited">
+          <div>
+            <header class="Post-header">
+              <ul>
+                <li class="item-user">
+                  <div class="PostUser">
+                    <h3>
+                      <a href="">
+                        <span class="Avatar PostUser-avatar" style="background: rgb(196, 160, 229);">D</span>
+                        <span class="username">{{viewPost.post.user.name}}</span>
+                      </a>
+                    </h3>
+                    <ul class="PostUser-badges badges"></ul>
+                  </div>
+                </li>
+                <li class="item-meta">
+                  <div class="Dropdown PostMeta">
+                    <a class="Dropdown-toggle" data-toggle="dropdown">
+                      <time pubdate="true" datetime="2016-10-21T21:31:40+08:00" title="{{viewPost.post.createdAt | date}}" data-humantime="true">
+                        {{viewPost.post.createdAt | date}}
+                      </time>
+                    </a>
+                    <div class="Dropdown-menu dropdown-menu">
+                      <span class="PostMeta-number">Post #1</span>
+                      <time pubdate="true" datetime="2016-10-21T21:31:40+08:00">Friday, October 21, 2016 9:31 PM</time>
+                      <input class="FormControl PostMeta-permalink">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-edited">
+                  <span class="PostEdited" title="" data-original-title="ftiasch edited 2 days ago">
+                    <i class="icon fa fa-fw fa-pencil "></i>
+                  </span>
+                </li>
+              </ul>
+            </header>
+            <div class="Post-body">
+              <p ng-bind-html="viewPost.renderHtml(viewPost.post.comment)">
+              </p>
+            </div>
+            <!--<aside class="Post-actions">
+              <ul>
+                <li class="item-like">
+                  <button class="Button Button--link" type="button">
+                    <span class="Button-label">Like</span>
+                  </button>
+                </li>
+                <li class="item-reply">
+                  <button class="Button Button--link" type="button">
+                    <span class="Button-label">Reply</span>
+                  </button>
+                </li>
+              </ul>
+            </aside>-->
+            <footer class="Post-footer">
+              <ul></ul>
+            </footer>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
