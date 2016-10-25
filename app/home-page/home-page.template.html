@@ -89,7 +89,7 @@
               </ul>-->
               <a href="#!/view-post/{{post.id}}" class="DiscussionListItem-main">
                 <h3 class="DiscussionListItem-title">
-                  {{post.title}}
+                  {{$root.id2course[post.courseId].name}}: {{post.title}}
                 </h3>
                 <ul class="DiscussionListItem-info">
                   <li class="item-tags" ng-show="post.postTagIds.length > 0">
@@ -100,11 +100,6 @@
                         </span>
                       </span>
                     </span>
-                  </li>
-                  <li class="item-excerpt">
-                    <h5>
-                      {{$root.id2course[post.courseId].name}}
-                    </h5>
                   </li>
                   <li class="item-terminalPost">
                     <h6>
@@ -118,7 +113,12 @@
                   </li>
                   <li class="item-excerpt">
                     <h5>
-                      <span ng-bind-html="homePage.renderHtml(post.comment)"></span>
+                      <p class="limit-line-text">
+                        <span style="color: #FDD835;">
+                          <i class="icon fa fa-star" ng-repeat="i in post.stars | range"></i><i class="icon fa fa-star-o" ng-repeat="i in (5 - post.stars) | range"></i>
+                        </span>
+                        <span ng-bind-html="homePage.renderHtml(post.comment)"></span>
+                      </p>
                     </h5>
                   </li>
                 </ul>
