@@ -3,12 +3,13 @@
 angular.module('myApp.courses')
 
 .controller('myApp.courses.newCourse', ['$rootScope',
-  'myApp.courses.coursesService', 'myApp.core.service',
-function($rootScope, coursesService, coreService) {
+  'myApp.courses.coursesService', 'myApp.core.service', 'myApp.teachers.teachersService',
+function($rootScope, coursesService, coreService, teachersService) {
   var self = this;
 
   self.course = {};
   self.course.courseTagIds = '';
+  self.teachers = teachersService.listAllTeachers();
 
   self.submitNewCourse = function() {
     self.course.teacherId = parseInt(self.course.teacherId);

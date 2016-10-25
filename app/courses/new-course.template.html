@@ -19,8 +19,13 @@
             <input type='text' id='courseId' class="form-control" ng-model="newCourse.course.courseId" required>
           </div>
           <div class="form-group">
-            <label>Teacher ID:</label>
-            <input type='text' id='teacherId' class="form-control" ng-model="newCourse.course.teacherId" required>
+            <label>Teacher:</label>
+            <select type='number' id='teacherId' class="form-control" ng-model="newCourse.course.teacherId" required>
+              <option value="">Select teacher</option>
+              <option ng-repeat="teacher in newCourse.teachers" ng-value="teacher.id">
+                {{teacher.name}}
+              </option>
+            </select>
           </div>
           <div class="form-group">
             <label>Course tag IDs:</label>

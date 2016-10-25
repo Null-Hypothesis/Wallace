@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('myApp.teachers');
+angular.module('myApp.teachers', []);
