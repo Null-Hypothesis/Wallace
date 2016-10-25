@@ -69,6 +69,9 @@
               </ul>
             </header>
             <div class="Post-body">
+              <p style="color: #FDD835;">
+                <i class="icon fa fa-star" ng-repeat="i in viewPost.post.stars | range"></i><i class="icon fa fa-star-o" ng-repeat="i in (5 - viewPost.post.stars) | range"></i>
+              </p>
               <p ng-bind-html="viewPost.renderHtml(viewPost.post.comment)">
               </p>
             </div>
