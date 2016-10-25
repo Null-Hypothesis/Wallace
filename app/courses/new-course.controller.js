@@ -2,8 +2,9 @@
 
 angular.module('myApp.courses')
 
-.controller('myApp.courses.newCourse', ['$rootScope', 'myApp.courses.coursesService',
-function($rootScope, coursesService) {
+.controller('myApp.courses.newCourse', ['$rootScope',
+  'myApp.courses.coursesService', 'myApp.core.service',
+function($rootScope, coursesService, coreService) {
   var self = this;
 
   self.course = {};
@@ -15,6 +16,7 @@ function($rootScope, coursesService) {
 
     $rootScope.$on('Create course finished',
     function(event, course) {
+      coreService.loadAll();
       $('#create_course').modal('hide');
       $('#create_course_success').modal('show');
     });

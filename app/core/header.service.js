@@ -10,9 +10,9 @@ function($rootScope) {
       'Content-Type': 'application/json'
     };
     if ($rootScope.user) {
-      header.Authorization = 'Token token="'
+      header["Authorization"] = 'Token token="'
         + $rootScope.user.token
-        + '" email="'
+        + '", email="'
         + $rootScope.user.email
         + '"';
     }

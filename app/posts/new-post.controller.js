@@ -2,8 +2,9 @@
 
 angular.module('myApp.posts')
 
-.controller('myApp.posts.newPost', ['$rootScope', 'myApp.posts.postsService',
-function($rootScope, postsService) {
+.controller('myApp.posts.newPost', ['$rootScope',
+  'myApp.posts.postsService', 'myApp.core.service',
+function($rootScope, postsService, coreService) {
   var self = this;
 
   self.post = {};
@@ -18,6 +19,7 @@ function($rootScope, postsService) {
     
     $rootScope.$on('Create post finished',
     function(event, post) {
+      coreService.loadAll();
       $('#create_post').modal('hide');
       $('#create_post_success').modal('show');
     });
