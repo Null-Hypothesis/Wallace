@@ -26,6 +26,5 @@ function($rootScope, postsService, coreService) {
     });
 
     var result = postsService.createPost(self.post);
-    console.log(result);
   }
 }]);

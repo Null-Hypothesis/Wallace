@@ -74,7 +74,7 @@
   <div class="IndexPage-results sideNavOffset">
     <div class="DiscussionList">
       <ul class="DiscussionList-discussions">
-        <li ng-repeat="post in homePage.posts">
+        <li ng-repeat="post in homePage.posts | orderBy : post.updatedAt : true">
           <div class="DiscussionListItem">
             <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled"><i class="icon fa fa-fw fa-check "></i></a>
             <div class="DiscussionListItem-content Slidable-content">
