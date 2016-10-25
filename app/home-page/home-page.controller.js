@@ -10,8 +10,6 @@ function ($rootScope, coreService) {
   self.courseTitle = undefined;
   self.currentCategory = undefined;
   self.currentCourse = undefined;
-  self.courseStyle = '';
-  self.postStyle = 'display:none';
   self.otherCourses = [];
 
   $rootScope.$on('Courses loaded',
@@ -38,6 +36,7 @@ function ($rootScope, coreService) {
     self.currentCategory = category.id;
     self.categoryTitle = category.name;
     self.currentCourse = undefined;
+    self.courseTitle = undefined;
     category.courses = [];
     for (var course of $rootScope.courses) {
       if (course.courseTagIds.includes(category.id)) {
@@ -57,8 +56,6 @@ function ($rootScope, coreService) {
     self.currentCourse = course.id;
     self.courseTitle = course.name;
     self.posts = [];
-    self.courseStyle = 'display:none';
-    self.postStyle = '';
     for (var post of $rootScope.posts) {
       if (post.courseId === course.id) {
         self.posts.push(post);
@@ -71,8 +68,6 @@ function ($rootScope, coreService) {
     self.currentCourse = undefined;
     self.categoryTitle = 'Latest posts';
     self.courseTitle = undefined;
-    self.courseStyle = '';
-    self.postStyle = 'display:none';
     self.posts = $rootScope.posts;
   };
 

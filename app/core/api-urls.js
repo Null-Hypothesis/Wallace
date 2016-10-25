@@ -2,7 +2,7 @@
 
 this.apiUrls = {};
 
-this.apiUrls.root = 'https://private-anon-cb1e9e27a4-nullhypothesis.apiary-mock.com';
+this.apiUrls.root = 'http://10.131.235.12:3000/api/v1';
 this.apiUrls.signUp = apiUrls.root + '/users';
 this.apiUrls.signIn = apiUrls.signUp + '/token';
 this.apiUrls.logOut = apiUrls.signIn;

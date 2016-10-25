@@ -2,11 +2,13 @@
 
 angular.module('myApp.user')
 
-.controller('myApp.user.logOut', ['$rootScope', '$http', '$location', '$timeout', 'myApp.user.userService',
-function($rootScope, $http, $location, $timeout, userService) {
+.controller('myApp.user.logOut', ['$rootScope', '$http', '$location', '$timeout',
+  'myApp.user.userService', 'myApp.core.headerService',
+function($rootScope, $http, $location, $timeout, userService, headerService) {
   $http({
     method: 'DELETE',
-    url: apiUrls.logOut
+    url: apiUrls.logOut,
+    headers: headerService.getHeader()
   }).then(function successCallback(response) {
     $rootScope.user = undefined;
     userService.setUserStatus(undefined);
