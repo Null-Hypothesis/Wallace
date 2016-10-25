@@ -6,7 +6,7 @@ angular.module('myApp.homePage')
 function ($rootScope, coreService) {
   var self = this;
 
-  self.categoryTitle = 'Latest Discussion';
+  self.categoryTitle = 'Latest posts';
   self.courseTitle = undefined;
   self.currentCategory = undefined;
   self.currentCourse = undefined;
@@ -69,10 +69,15 @@ function ($rootScope, coreService) {
   self.clearCategory = function() {
     self.currentCategory = undefined;
     self.currentCourse = undefined;
-    self.categoryTitle = 'Latest Discussion';
+    self.categoryTitle = 'Latest posts';
     self.courseTitle = undefined;
     self.courseStyle = '';
     self.postStyle = 'display:none';
     self.posts = $rootScope.posts;
+  };
+
+  self.selectOtherCategory = function() {
+    self.currentCategory = 0;
+    self.categoryTitle = 'Other';
   };
 }]);
