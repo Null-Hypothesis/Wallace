@@ -14,6 +14,7 @@ function($rootScope, postsService, coreService) {
   self.submitNewPost = function() {
     self.post.stars = parseInt(self.post.stars);
     self.post.courseId = self.courseId;
+    console.log($rootScope.user);
     self.post.userId = $rootScope.user.id;
     self.post.postTagIds = JSON.parse('[' + self.post.postTagIds + ']');
     
