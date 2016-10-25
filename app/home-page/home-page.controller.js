@@ -79,5 +79,12 @@ function ($rootScope, coreService) {
   self.selectOtherCategory = function() {
     self.currentCategory = 0;
     self.categoryTitle = 'Other';
+    self.posts = [];
+    for (var post of $rootScope.posts) {
+      var course = $rootScope.id2course[post.courseId];
+      if (course.courseTagIds.length === 0) {
+        self.posts.push(post);
+      }
+    }
   };
 }]);

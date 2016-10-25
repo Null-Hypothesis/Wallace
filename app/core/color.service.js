@@ -6,7 +6,7 @@ function() {
   var service = {};
 
   service.mainColorCategories = [
-    'Gray',
+    'Grey',
     'Pink',
     'Cyan',
     'Light Green',
@@ -26,6 +26,27 @@ function() {
     'Brown',
     'Blue Grey'
   ];
+
+  service.lightColorCategories = [
+    'Light Blue',
+    'Cyan',
+    'Green',
+    'Light Green',
+    'Lime',
+    'Yellow',
+    'Amber',
+    'Orange',
+    'Grey'
+  ];
+
+  service.getIndex = function(content) {
+    var total = service.mainColorCategories.length;
+    if (typeof(content) === 'string') {
+      return content.charCodeAt(0) % total;
+    } else {
+      return content % total;
+    }
+  }
 
   return service;
 }]);
