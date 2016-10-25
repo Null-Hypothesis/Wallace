@@ -12,6 +12,16 @@ function ($rootScope, coreService) {
   self.currentCourse = undefined;
   self.courseStyle = '';
   self.postStyle = 'display:none';
+  self.otherCourses = [];
+
+  $rootScope.$on('Courses loaded',
+  function(event) {
+    for (var course of $rootScope.courses) {
+      if (course.courseTagIds.length === 0) {
+        self.otherCourses.push(course);
+      }
+    }
+  });
 
   coreService.loadAll();
 
