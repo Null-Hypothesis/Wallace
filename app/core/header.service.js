@@ -16,7 +16,6 @@ function($rootScope) {
         + $rootScope.user.email
         + '"';
     }
-    console.log(header);
     return header;
   }
 

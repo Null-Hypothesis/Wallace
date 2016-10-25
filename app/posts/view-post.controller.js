@@ -14,8 +14,6 @@ function($routeParams, $rootScope, $sce, coreService, postsService) {
   self.postId = parseInt($routeParams.postId);
   self.post = postsService.getPostById(self.postId);
 
-  self.renderHtml = function(htmlCode) {
-    return $sce.trustAsHtml(htmlCode);
-  }
+  self.renderHtml = coreService.renderHtml;
 
 }]);

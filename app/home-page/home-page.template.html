@@ -91,24 +91,36 @@
                 <h3 class="DiscussionListItem-title">
                   {{post.title}}
                 </h3>
-                <h5>
-                  {{$root.id2course[post.courseId].name}}
-                </h5>
-                <h6>
-                  by {{post.user.name}}
-                </h6>
                 <ul class="DiscussionListItem-info">
-                  <li class="item-tags">
-                    <span class="TagsLabel ">
-                      <span class="TagLabel  colored" ng-repeat="postTagId in post.postTagIds" style="color: rgb(242, 194, 190); background-color: rgb(242, 194, 190);">
+                  <li class="item-tags" ng-show="post.postTagIds.length > 0">
+                    <span class="TagsLabel">
+                      <span class="TagLabel colored" ng-repeat="postTagId in post.postTagIds" style="color: rgb(242, 194, 190); background: {{postTagId | bgColor}}; color:{{postTagId | textColor}};">
                         <span class="TagLabel-text">
                           {{$root.id2postTag[postTagId].name}}
                         </span>
                       </span>
                     </span>
-                  </li> 
-                  <li class="item-terminalPost"><span><i class="icon fa fa-fw fa-reply "></i> <span class="username"></span> updated <time pubdate="true" datetime="{{post.updatedAt}}" title="{{post.updatedAt | date}}" data-humantime="true" >{{post.updatedAt | date}}</time></span></li> 
-                  <li class="item-excerpt"><span>{{post.comment}}</span></li> 
+                  </li>
+                  <li class="item-excerpt">
+                    <h5>
+                      {{$root.id2course[post.courseId].name}}
+                    </h5>
+                  </li>
+                  <li class="item-terminalPost">
+                    <h6>
+                      <span>
+                        by <span class="username">{{post.user.name}}</span>
+                        <i class="icon fa fa-fw fa-reply "></i>
+                        updated
+                        <time pubdate="true" datetime="{{post.updatedAt}}" title="{{post.updatedAt | date}}" data-humantime="true" >{{post.updatedAt | date}}</time>
+                      </span>
+                    </h6>
+                  </li>
+                  <li class="item-excerpt">
+                    <h5>
+                      <span ng-bind-html="homePage.renderHtml(post.comment)"></span>
+                    </h5>
+                  </li>
                 </ul>
               </a>
               <span class="DiscussionListItem-count" title="">1</span>

@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('myApp.core')
-.factory('myApp.core.service', ['$rootScope', 'myApp.courses.courseTagsService',
+.factory('myApp.core.service', ['$rootScope', '$sce',
+  'myApp.courses.courseTagsService',
   'myApp.courses.coursesService', 'myApp.posts.postTagsService', 'myApp.posts.postsService',
-function($rootScope, courseTagsService, coursesService, postTagsService, postsService) {
+function($rootScope, $sce, courseTagsService, coursesService, postTagsService, postsService) {
   var service = {};
 
   service.buildIndex = function(arr) {
@@ -51,6 +52,10 @@ function($rootScope, courseTagsService, coursesService, postTagsService, postsSe
     $rootScope.courses = coursesService.listAllCourses();
     $rootScope.posts = postsService.listAllPosts();
   };
+
+  service.renderHtml = function(htmlCode) {
+    return $sce.trustAsHtml(htmlCode);
+  }
 
   return service;
 }]);
