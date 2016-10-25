@@ -38,7 +38,7 @@
                   <div class="PostUser">
                     <h3>
                       <a href="">
-                        <span class="Avatar PostUser-avatar" style="background: rgb(196, 160, 229);">
+                        <span class="Avatar PostUser-avatar" style="background: {{viewPost.post.user.name | bgColor}}; color:{{viewPost.post.user.name | textColor}};">
                           {{viewPost.firstCharUpperCase(viewPost.post.user.name)}}
                         </span>
                         <span class="username">{{viewPost.post.user.name}}</span>

@@ -79,7 +79,7 @@
             <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled"><i class="icon fa fa-fw fa-check "></i></a>
             <div class="DiscussionListItem-content Slidable-content">
               <a href="" class="DiscussionListItem-author" title="">
-                <span class="Avatar" style="background: rgb(196, 160, 229);">
+                <span class="Avatar" style="background: {{post.user.name | bgColor}}; color:{{post.user.name | textColor}};">
                   {{homePage.firstCharUpperCase(post.user.name)}}
                 </span>
               </a>

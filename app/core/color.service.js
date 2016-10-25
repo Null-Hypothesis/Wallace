@@ -40,6 +40,9 @@ function() {
   ];
 
   service.getIndex = function(content) {
+    if (content === undefined) {
+      return 0;
+    }
     var total = service.mainColorCategories.length;
     if (typeof(content) === 'string') {
       return content.charCodeAt(0) % total;
