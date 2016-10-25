@@ -15,7 +15,7 @@ function ($http, $rootScope) {
       Array.prototype.push.apply(postTags, response.data);
       $rootScope.$broadcast('Post tags loaded', postTags);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return postTags;
@@ -33,7 +33,7 @@ function ($http, $rootScope) {
     }).then(function successCallback(response) {
       Object.assign(postTag, response.data);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return postTag;

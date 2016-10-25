@@ -16,7 +16,7 @@ function($http, $rootScope) {
       Array.prototype.push.apply(courses, response.data);
       $rootScope.$broadcast('Courses loaded', courses);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return courses;
@@ -41,7 +41,7 @@ function($http, $rootScope) {
     }).then(function successCallback(response) {
       Object.assign(course, response.data);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return course;
@@ -54,7 +54,7 @@ function($http, $rootScope) {
     }).then(function successCallback(response) {
       //
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
   }
 
@@ -78,7 +78,7 @@ function($http, $rootScope) {
       Object.assign(course, response.data);
       $rootScope.$broadcast('Create course finished', course);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return course;

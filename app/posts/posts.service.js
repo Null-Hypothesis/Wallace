@@ -15,7 +15,7 @@ function ($http, $rootScope) {
       Array.prototype.push.apply(posts, response.data);
       $rootScope.$broadcast('Posts loaded', posts);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return posts;
@@ -40,7 +40,7 @@ function ($http, $rootScope) {
     }).then(function successCallback(response) {
       Object.assign(post, response.data);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return post;
@@ -53,7 +53,7 @@ function ($http, $rootScope) {
     }).then(function successCallback(response) {
       //
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
   }
 
@@ -77,7 +77,7 @@ function ($http, $rootScope) {
       Object.assign(post, response.data);
       $rootScope.$broadcast('Create post finished', post)
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return post;
@@ -92,7 +92,7 @@ function ($http, $rootScope) {
     }).then(function successCallback(response) {
       Object.assign(post, response.data);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return post;

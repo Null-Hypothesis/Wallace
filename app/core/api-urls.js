@@ -12,7 +12,6 @@ this.apiUrls.posts = apiUrls.root + '/posts';
 this.apiUrls.postTags = apiUrls.posts + '/tags';
 this.apiUrls.teachers = apiUrls.courses + '/teachers';
 
-
 //this.apiUrls.courses = 'mock-data/courses.json'
 //this.apiUrls.courseTags = 'mock-data/courseTags.json';
 //this.apiUrls.posts = 'mock-data/posts.json'

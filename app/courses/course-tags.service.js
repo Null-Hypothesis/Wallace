@@ -15,8 +15,8 @@ function($http, $rootScope) {
     }).then(function successCallback(response) {
       Array.prototype.push.apply(courseTags, response.data);
       $rootScope.$broadcast('Course tags loaded', courseTags);
-    }, function errorCallback() {
-      //
+    }, function errorCallback(error) {
+      console.log(error);
     });
 
     return courseTags;
@@ -34,7 +34,7 @@ function($http, $rootScope) {
     }).then(function successCallback(response) {
       Object.assign(courseTag, response.data);
     }, function errorCallback(error) {
-      //
+      console.log(error);
     });
 
     return courseTag;
