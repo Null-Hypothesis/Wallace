@@ -2,8 +2,8 @@
 
 angular.module('myApp.courses')
 
-.factory('myApp.courses.coursesService', ['$http', '$rootScope',
-function($http, $rootScope) {
+.factory('myApp.courses.coursesService', ['$http', '$rootScope', 'myApp.core.headerService',
+function($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllCourses = function() {
@@ -11,7 +11,8 @@ function($http, $rootScope) {
 
     $http({
       method: 'GET',
-      url: apiUrls.courses, 
+      url: apiUrls.courses,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Array.prototype.push.apply(courses, response.data);
       $rootScope.$broadcast('Courses loaded', courses);
@@ -37,7 +38,8 @@ function($http, $rootScope) {
     $http({
       method: 'PUT',
       url: apiUrls.courses + '/' + args.id,
-      data: args.data
+      data: args.data,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Object.assign(course, response.data);
     }, function errorCallback(error) {
@@ -50,7 +52,8 @@ function($http, $rootScope) {
   service.deleteCourse = function(id) {
     $http({
       method: 'DELETE',
-      url: apiUrls.courses + '/' + id
+      url: apiUrls.courses + '/' + id,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       //
     }, function errorCallback(error) {
@@ -73,7 +76,8 @@ function($http, $rootScope) {
     $http({
       method: 'POST',
       url: apiUrls.courses,
-      data: data
+      data: data,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Object.assign(course, response.data);
       $rootScope.$broadcast('Create course finished', course);

@@ -1,7 +1,10 @@
 'use strict';
 
 // Define the `user` module
-angular.module('myApp.user', ['myApp.navBar'])
+angular.module('myApp.user', [
+  'myApp.navBar',
+  'myApp.core'
+])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider

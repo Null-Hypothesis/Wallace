@@ -1,3 +1,5 @@
 'use strict';
 
-angular.module('myApp.courses', []);
+angular.module('myApp.courses', [
+  'myApp.core'
+]);

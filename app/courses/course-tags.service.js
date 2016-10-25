@@ -2,8 +2,8 @@
 
 angular.module('myApp.courses')
 
-.factory('myApp.courses.courseTagsService', ['$http', '$rootScope',
-function($http, $rootScope) {
+.factory('myApp.courses.courseTagsService', ['$http', '$rootScope', 'myApp.core.headerService',
+function($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllCourseTags = function() {
@@ -11,7 +11,8 @@ function($http, $rootScope) {
 
     $http({
       method: 'GET',
-      url: apiUrls.courseTags, 
+      url: apiUrls.courseTags,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Array.prototype.push.apply(courseTags, response.data);
       $rootScope.$broadcast('Course tags loaded', courseTags);
@@ -30,7 +31,8 @@ function($http, $rootScope) {
       url: apiUrls.courseTags,
       data: {
         name: name
-      }
+      },
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Object.assign(courseTag, response.data);
     }, function errorCallback(error) {

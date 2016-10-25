@@ -2,8 +2,8 @@
 
 angular.module('myApp.user')
 
-.controller('myApp.user.signUp', ['$http', '$location', '$timeout',
-function($http, $location, $timeout) {
+.controller('myApp.user.signUp', ['$http', '$location', '$timeout', 'myApp.core.headerService',
+function($http, $location, $timeout, headerService) {
   this.user = {};
 
   var form = $('#sign-up-form');
@@ -22,7 +22,8 @@ function($http, $location, $timeout) {
         password_confirmation: this.user.confirmPassword,
         name: this.user.name,
         description: this.user.description
-      }
+      },
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       $('#sign-up-success-modal').modal('show');
       $timeout(function() {

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('myApp.posts')
-.factory('myApp.posts.postsService', ['$http', '$rootScope',
-function ($http, $rootScope) {
+.factory('myApp.posts.postsService', ['$http', '$rootScope', 'myApp.core.headerService',
+function ($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllPosts = function() {
@@ -10,7 +10,8 @@ function ($http, $rootScope) {
 
     $http({
       method: 'GET',
-      url: apiUrls.posts
+      url: apiUrls.posts,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Array.prototype.push.apply(posts, response.data);
       $rootScope.$broadcast('Posts loaded', posts);
@@ -36,7 +37,8 @@ function ($http, $rootScope) {
     $http({
       method: 'PUT',
       url: apiUrls.posts + '/' + args.id,
-      data: args.data
+      data: args.data,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Object.assign(post, response.data);
     }, function errorCallback(error) {
@@ -49,7 +51,8 @@ function ($http, $rootScope) {
   service.deletePost = function(id) {
     $http({
       method: 'DELETE',
-      url: apiUrls.posts + '/' + id
+      url: apiUrls.posts + '/' + id,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       //
     }, function errorCallback(error) {
@@ -72,7 +75,8 @@ function ($http, $rootScope) {
     $http({
       method: 'POST',
       url: apiUrls.posts,
-      data: data
+      data: data,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Object.assign(post, response.data);
       $rootScope.$broadcast('Create post finished', post)
@@ -88,7 +92,8 @@ function ($http, $rootScope) {
 
     $http({
       method: 'GET',
-      url: apiUrls.posts + '/' + id
+      url: apiUrls.posts + '/' + id,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Object.assign(post, response.data);
     }, function errorCallback(error) {

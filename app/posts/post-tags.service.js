@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('myApp.posts')
-.factory('myApp.posts.postTagsService', ['$http', '$rootScope',
-function ($http, $rootScope) {
+.factory('myApp.posts.postTagsService', ['$http', '$rootScope', 'myApp.core.headerService',
+function ($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllPostTags = function() {
@@ -10,7 +10,8 @@ function ($http, $rootScope) {
 
     $http({
       method: 'GET',
-      url: apiUrls.postTags
+      url: apiUrls.postTags,
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Array.prototype.push.apply(postTags, response.data);
       $rootScope.$broadcast('Post tags loaded', postTags);
@@ -29,7 +30,8 @@ function ($http, $rootScope) {
       url: apiUrls.postTags,
       data: {
         name: name
-      }
+      },
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       Object.assign(postTag, response.data);
     }, function errorCallback(error) {

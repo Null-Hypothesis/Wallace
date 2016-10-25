@@ -2,8 +2,9 @@
 
 angular.module('myApp.user')
 
-.controller('myApp.user.signIn', ['$http', '$location', '$rootScope', '$timeout', 'myApp.user.userService',
-function($http, $location, $rootScope, $timeout, userService) {
+.controller('myApp.user.signIn', ['$http', '$location', '$rootScope', '$timeout',
+  'myApp.user.userService', 'myApp.core.headerService',
+function($http, $location, $rootScope, $timeout, userService, headerService) {
   this.user = {};
 
   var form = $('#sign-in-form');
@@ -19,7 +20,8 @@ function($http, $location, $rootScope, $timeout, userService) {
       data: {
         email: this.user.email,
         password: this.user.password
-      }
+      },
+      headers: headerService.getHeader()
     }).then(function successCallback(response) {
       $rootScope.user = response.data;
       userService.setUserStatus(response.data);
