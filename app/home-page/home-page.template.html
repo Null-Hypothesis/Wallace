@@ -17,7 +17,7 @@
       </li>
         <li class="item-newDiscussion App-primaryControl" style="{{homePage.postStyle}}">        
         <button class="Button Button--primary IndexPage-newDiscussion hasIcon" itemclassname="App-primaryControl" type="button" style="background-color: rgb(0, 160, 232);" href='#create_post' data-toggle='modal'>
-          <span class="Button-label">New discussion</span>
+          <span class="Button-label">New post</span>
         </button>
       </li>
       <li class="item-nav">
@@ -104,44 +104,7 @@
     </ul>
   </div>
 </div>
+
 <new-course></new-course>
 
-<div id="create_post" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New discussion</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label>stars </label>
-            <input type='text' id='stars' class="form-control">
-          </div>
-          <div class="form-group">
-            <label>comment</label>
-            <input type='text' id='comment' class="form-control">
-          </div>
-          <div class="form-group">
-            <label>courseId</label>
-            <input type='text' id='courseId' class="form-control">
-          </div>
-          <div class="form-group">
-            <label>userId</label>
-            <input type='text' id='userId' class="form-control">
-          </div>
-          <div class="form-group">
-            <label>postTagIds</label>
-            <input type='text' id='postTagIds' class="form-control">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+<new-post course-id="homePage.currentCourse"></new-post>

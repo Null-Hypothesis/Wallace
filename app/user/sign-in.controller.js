@@ -6,9 +6,13 @@ angular.module('myApp.user')
 function($http, $location, $rootScope, $timeout, userService) {
   this.user = {};
 
-  $('#sign-in-form').validator();
+  var form = $('#sign-in-form');
 
   this.submitSignInForm = function() {
+    form.validator('validate');
+    if (form.find('.has-error').length > 0) {
+      return;
+    }
     $http({
       method: 'POST',
       url: apiUrls.signIn,

@@ -6,31 +6,33 @@ angular.module('myApp.user')
 function($http, $location, $timeout) {
   this.user = {};
 
-  $('#sign-up-form').validator();
+  var form = $('#sign-up-form');
 
   this.submitSignUpForm = function() {
-    if (this.user.password === this.user.confirmPassword) {
-      $http({
-        method: 'POST',
-        url: apiUrls.signUp,
-        data: {
-          email: this.user.email,
-          password: this.user.password,
-          password_confirmation: this.user.confirmPassword,
-          name: this.user.name,
-          description: this.user.description
-        }
-      }).then(function successCallback(response) {
-        $('#sign-up-success-modal').modal('show');
-        $timeout(function() {
-          $('#sign-up-success-modal').modal('hide');
-          $timeout(function() {
-            $location.path('/sign-in');
-          }, 500);
-        }, 2500);
-      }, function errorCallback() {
-        //
-      });
+    form.validator('validate');
+    if (form.find('.has-error').length > 0) {
+      return;
     }
+    $http({
+      method: 'POST',
+      url: apiUrls.signUp,
+      data: {
+        email: this.user.email,
+        password: this.user.password,
+        password_confirmation: this.user.confirmPassword,
+        name: this.user.name,
+        description: this.user.description
+      }
+    }).then(function successCallback(response) {
+      $('#sign-up-success-modal').modal('show');
+      $timeout(function() {
+        $('#sign-up-success-modal').modal('hide');
+        $timeout(function() {
+          $location.path('/sign-in');
+        }, 500);
+      }, 2500);
+    }, function errorCallback() {
+      //
+    });
   };
 }]);

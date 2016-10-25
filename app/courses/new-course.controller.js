@@ -17,7 +17,6 @@ function($rootScope, coursesService) {
     function(event, course) {
       $('#create_course').modal('hide');
       $('#create_course_success').modal('show');
-
     });
 
     var result = coursesService.createCourse(self.course);

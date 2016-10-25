@@ -75,6 +75,7 @@ function ($http, $rootScope) {
       data: data
     }).then(function successCallback(response) {
       Object.assign(post, response.data);
+      $rootScope.$broadcast('Create post finished', post)
     }, function errorCallback(error) {
       //
     });
