@@ -9,6 +9,7 @@ function($rootScope, coursesService, coreService, teachersService) {
 
   self.course = {};
   self.course.courseTagIds = '';
+  self.course.teacherId = '';
   self.teachers = teachersService.listAllTeachers();
 
   self.submitNewCourse = function() {
@@ -23,5 +24,8 @@ function($rootScope, coursesService, coreService, teachersService) {
     });
 
     var result = coursesService.createCourse(self.course);
+    self.course = {};
+    self.course.courseTagIds = '';
+    self.course.teacherId = '';
   }
 }]);
