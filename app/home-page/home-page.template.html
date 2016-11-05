@@ -75,59 +75,10 @@
     <div class="DiscussionList">
       <ul class="DiscussionList-discussions">
         <li ng-repeat="post in homePage.posts | orderBy : post.updatedAt : true">
-          <div class="DiscussionListItem">
-            <a class="Slidable-underneath Slidable-underneath--left Slidable-underneath--elastic disabled"><i class="icon fa fa-fw fa-check "></i></a>
-            <div class="DiscussionListItem-content Slidable-content">
-              <a href="" class="DiscussionListItem-author" title="">
-                <span class="Avatar" style="background: {{post.user.name | bgColor}}; color:{{post.user.name | textColor}};">
-                  {{homePage.firstCharUpperCase(post.user.name)}}
-                </span>
-              </a>
-              <!--<a href="/u/ftiasch" class="DiscussionListItem-author" title="" data-original-title="ftiasch started a day ago"><img class="Avatar " src="https://async.icpc-camp.org/assets/avatars/8c38e72064f8beda857235028503abbb.png" /></a>
-              <ul class="DiscussionListItem-badges badges">
-                 <li class="item-sticky"><span class="Badge Badge--sticky " title="" data-original-title="Sticky"><i class="icon fa fa-fw fa-thumb-tack Badge-icon"></i></span></li> 
-              </ul>-->
-              <a href="#!/view-post/{{post.id}}" class="DiscussionListItem-main">
-                <h3 class="DiscussionListItem-title">
-                  {{$root.id2course[post.courseId].name}}: {{post.title}}
-                </h3>
-                <ul class="DiscussionListItem-info">
-                  <li class="item-tags" ng-show="post.postTagIds.length > 0">
-                    <span class="TagsLabel">
-                      <span class="TagLabel colored" ng-repeat="postTagId in post.postTagIds" style="color: rgb(242, 194, 190); background: {{postTagId | bgColor}}; color:{{postTagId | textColor}};">
-                        <span class="TagLabel-text">
-                          {{$root.id2postTag[postTagId].name}}
-                        </span>
-                      </span>
-                    </span>
-                  </li>
-                  <li class="item-terminalPost">
-                    <h6>
-                      <span>
-                        by <span class="username">{{post.user.name}}</span>
-                        <i class="icon fa fa-fw fa-reply "></i>
-                        updated
-                        <time pubdate="true" datetime="{{post.updatedAt}}" title="{{post.updatedAt | date}}" data-humantime="true" >{{post.updatedAt | date}}</time>
-                      </span>
-                    </h6>
-                  </li>
-                  <li class="item-excerpt">
-                    <h5>
-                      <p class="limit-line-text">
-                        <span style="color: #FDD835;">
-                          <i class="icon fa fa-star" ng-repeat="i in post.stars | range"></i><i class="icon fa fa-star-o" ng-repeat="i in (5 - post.stars) | range"></i>
-                        </span>
-                        <span ng-bind-html="homePage.renderHtml(post.comment)"></span>
-                      </p>
-                    </h5>
-                  </li>
-                </ul>
-              </a>
-              <span class="DiscussionListItem-count" title="">1</span>
-            </div>
-        </div>
-      </li>
-    </ul>
+          <post-preview post-id="post.id"></post-preview>  
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 

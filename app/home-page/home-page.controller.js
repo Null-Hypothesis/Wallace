@@ -11,7 +11,6 @@ function ($rootScope, coreService) {
   self.currentCategory = undefined;
   self.currentCourse = undefined;
   self.otherCourses = [];
-  self.renderHtml = coreService.renderHtml;
 
   self.freshOtherCategoryCourses = function () {
     self.otherCourses = [];
@@ -39,8 +38,6 @@ function ($rootScope, coreService) {
   });
 
   coreService.loadAll();
-
-  self.firstCharUpperCase = coreService.firstCharUpperCase;
 
   self.isCategory = function(category) {
     return category.id === self.currentCategory;
