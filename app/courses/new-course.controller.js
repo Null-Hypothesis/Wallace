@@ -11,8 +11,20 @@ function($rootScope, coursesService, coreService, teachersService) {
   self.course.courseTagIds = '';
   self.course.teacherId = '';
   self.teachers = teachersService.listAllTeachers();
+  self.courseTags = $rootScope.courseTags;
+  self.selectedTeacher = {};
+  self.selectedCourseTags = [];
+
+  self.tagTransform = function(name) {
+    var item = {};
+    item.name = name;
+    item.id = undefined;
+    return item;
+  }
 
   self.submitNewCourse = function() {
+    console.log(self.selectedTeacher);
+    return;
     self.course.teacherId = parseInt(self.course.teacherId);
     self.course.courseTagIds = JSON.parse('[' + self.course.courseTagIds + ']');
 

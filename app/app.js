@@ -4,6 +4,8 @@
 angular.module('myApp', [
   'ngRoute',
   'ngCookies',
+  'ngSanitize',
+  'ui.select',
   'myApp.user',
   'myApp.version',
   'myApp.navBar',

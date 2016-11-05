@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div id="create_course" class="modal fade" role="dialog">
+<div id="create_course" class="modal" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -20,16 +20,31 @@
           </div>
           <div class="form-group">
             <label>Teacher:</label>
-            <select type='number' id='teacherId' class="form-control" ng-model="newCourse.course.teacherId" required>
+            <!--<select type='number' id='teacherId' class="form-control" ng-model="newCourse.course.teacherId" required>
               <option value="">Select teacher</option>
               <option ng-repeat="teacher in newCourse.teachers" ng-value="teacher.id">
                 {{teacher.name}}
               </option>
-            </select>
+            </select>-->
+            <ui-select id='teacherId' tagging="newCourse.tagTransform" tagging-label="false" ng-model="newCourse.selectedTeacher" theme="bootstrap" title="Select teacher">
+              <ui-select-match placeholder="Select teacher">
+                {{$select.selected.name}}
+              </ui-select-match>
+              <ui-select-choices repeat="teacher in (newCourse.teachers | filter: $select.search)">
+                {{teacher.name}}
+              </ui-select-choices>
+            </ui-select>
           </div>
           <div class="form-group">
-            <label>Course tag IDs:</label>
-            <input type='text' id='courseTagIds' class="form-control" ng-model="newCourse.course.courseTagIds">
+            <label>Course tags:</label>
+            <ui-select multiple id='courseTags' tagging="newCourse.tagTransform" tagging-label="false" ng-model="newCourse.selectedCourseTags" theme="bootstrap" title="Select course tags">
+              <ui-select-match placeholder="Telect course tags">
+                {{$item.name}}
+              </ui-select-match>
+              <ui-select-choices repeat="courseTag in (newCourse.courseTags | filter: $select.search)">
+                {{courseTag.name}}
+              </ui-select-choices>
+            </ui-select>
           </div>
           <div class="form-group">
             <label>Description:</label>
