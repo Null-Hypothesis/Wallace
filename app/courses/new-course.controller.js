@@ -27,7 +27,7 @@ function($rootScope, $q, coursesService, coreService, teachersService, courseTag
     if (self.selectedTeacher.id === undefined) {
       promises.push(teachersService.createTeacher(self.selectedTeacher.name)
       .then(function (teacher) {
-        self.selectedTeacher.id = teacher.id;
+        Object.assign(self.selectedTeacher, teacher);
       }));
     }
 
@@ -35,7 +35,7 @@ function($rootScope, $q, coursesService, coreService, teachersService, courseTag
       if (courseTag.id === undefined) {
         promises.push(courseTagsService.createCourseTag(courseTag.name)
         .then(function (resultTag) {
-          courseTag.id = resultTag.id;
+          Object.assign(courseTag, resultTag);
         }));
       }
     }
@@ -57,6 +57,10 @@ function($rootScope, $q, coursesService, coreService, teachersService, courseTag
       $('#create_course').modal('hide');
       $('#create_course_success').modal('show');
       self.course = {};
+      self.self.teachers = teachersService.listAllTeachers();
+      self.courseTags = $rootScope.courseTags;
+      self.selectedTeacher = {};
+      self.selectedCourseTags = [];
     });
   }
 }]);

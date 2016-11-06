@@ -70,21 +70,17 @@ function ($http, $rootScope, headerService) {
     * }
     */
   service.createPost = function(data) {
-    var post = {};
-
-    $http({
+    return $http({
       method: 'POST',
       url: apiUrls.posts,
       data: data,
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Object.assign(post, response.data);
-      $rootScope.$broadcast('Create post finished', post)
+      return response.data;
+      $rootScope.$broadcast('Create post finished', response.data);
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return post;
   }
 
   service.getPostById = function(id) {

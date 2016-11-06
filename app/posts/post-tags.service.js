@@ -23,9 +23,7 @@ function ($http, $rootScope, headerService) {
   }
 
   service.createPostTag = function(name) {
-    var postTag = {};
-
-    $http({
+    return $http({
       method: 'POST',
       url: apiUrls.postTags,
       data: {
@@ -33,12 +31,11 @@ function ($http, $rootScope, headerService) {
       },
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Object.assign(postTag, response.data);
+      return response.data;
+      $rootScope.$broadcast('Create post tag finished', response.data);
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return postTag;
   }
 
   return service;

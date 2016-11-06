@@ -26,8 +26,15 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Post tag IDs: </label>
-            <input type='text' id='postTagIds' class="form-control" ng-model="newPost.post.postTagIds">
+            <label>Post tags: </label>
+            <ui-select multiple id='postTags' tagging="newPost.tagTransform" tagging-label="false" ng-model="newPost.selectedPostTags" theme="bootstrap" title="Select post tags">
+              <ui-select-match placeholder="Select post tags">
+                {{$item.name}}
+              </ui-select-match>
+              <ui-select-choices repeat="postTag in (newPost.postTags | filter: $select.search)">
+                {{postTag.name}}
+              </ui-select-choices>
+            </ui-select>
           </div>
           <div class="form-group">
             <label>comment: </label>

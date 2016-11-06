@@ -71,21 +71,17 @@ function($http, $rootScope, headerService) {
     * }
     */
   service.createCourse = function(data) {
-    var course = {};
-
-    $http({
+    return $http({
       method: 'POST',
       url: apiUrls.courses,
       data: data,
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Object.assign(course, response.data);
-      $rootScope.$broadcast('Create course finished', course);
+      return response.data;
+      $rootScope.$broadcast('Create course finished', response.data);
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return course;
   } 
 
   return service;
