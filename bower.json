@@ -17,6 +17,7 @@
     "bootstrap": "~3.3.0",
     "bootstrap-validator": "*",
     "google-material-color": "*",
-    "angular-ui-select": "*"
+    "angular-ui-select": "*",
+    "angular-trix": "*"
   }
 }

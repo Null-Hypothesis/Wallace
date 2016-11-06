@@ -6,6 +6,7 @@ angular.module('myApp', [
   'ngCookies',
   'ngSanitize',
   'ui.select',
+  'angularTrix',
   'myApp.user',
   'myApp.version',
   'myApp.navBar',
