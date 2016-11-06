@@ -18,6 +18,6 @@
     "bootstrap-validator": "*",
     "google-material-color": "*",
     "angular-ui-select": "*",
-    "angular-trix": "*"
+    "textAngular": "*"
   }
 }
