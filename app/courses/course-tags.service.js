@@ -24,9 +24,7 @@ function($http, $rootScope, headerService) {
   };
 
   service.createCourseTag = function(name) {
-    var courseTag = {};
-
-    $http({
+    return $http({
       method: 'POST',
       url: apiUrls.courseTags,
       data: {
@@ -34,12 +32,11 @@ function($http, $rootScope, headerService) {
       },
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Object.assign(courseTag, response.data);
+      $rootScope.$broadcast('Create course tag finished', response.data);
+      return response.data;
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return courseTag;
   }
 
   return service;

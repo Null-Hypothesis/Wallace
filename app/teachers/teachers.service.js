@@ -23,9 +23,7 @@ function ($http, $rootScope, headerService) {
   };
 
   service.createTeacher = function (name) {
-    var teacher = {};
-
-    $http({
+    return $http({
       method: 'POST',
       url: apiUrls.teachers,
       data: {
@@ -33,13 +31,11 @@ function ($http, $rootScope, headerService) {
       },
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Object.assign(teacher, response.data);
-      $rootScope.$broadcast('Create teacher finished', teacher);
+      $rootScope.$broadcast('Create teacher finished', response.data);
+      return response.data;
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return teacher;
   }
 
   return service;

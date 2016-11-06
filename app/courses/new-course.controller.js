@@ -2,14 +2,13 @@
 
 angular.module('myApp.courses')
 
-.controller('myApp.courses.newCourse', ['$rootScope',
-  'myApp.courses.coursesService', 'myApp.core.service', 'myApp.teachers.teachersService',
-function($rootScope, coursesService, coreService, teachersService) {
+.controller('myApp.courses.newCourse', ['$rootScope', '$q',
+  'myApp.courses.coursesService', 'myApp.core.service',
+  'myApp.teachers.teachersService', 'myApp.courses.courseTagsService',
+function($rootScope, $q, coursesService, coreService, teachersService, courseTagsService) {
   var self = this;
 
   self.course = {};
-  self.course.courseTagIds = '';
-  self.course.teacherId = '';
   self.teachers = teachersService.listAllTeachers();
   self.courseTags = $rootScope.courseTags;
   self.selectedTeacher = {};
@@ -23,21 +22,41 @@ function($rootScope, coursesService, coreService, teachersService) {
   }
 
   self.submitNewCourse = function() {
-    console.log(self.selectedTeacher);
-    return;
-    self.course.teacherId = parseInt(self.course.teacherId);
-    self.course.courseTagIds = JSON.parse('[' + self.course.courseTagIds + ']');
+    var promises = [];
 
-    $rootScope.$on('Create course finished',
-    function(event, course) {
+    if (self.selectedTeacher.id === undefined) {
+      promises.push(teachersService.createTeacher(self.selectedTeacher.name)
+      .then(function (teacher) {
+        self.selectedTeacher.id = teacher.id;
+      }));
+    }
+
+    for (var courseTag of self.selectedCourseTags) {
+      if (courseTag.id === undefined) {
+        promises.push(courseTagsService.createCourseTag(courseTag.name)
+        .then(function (resultTag) {
+          courseTag.id = resultTag.id;
+        }));
+      }
+    }
+
+    $q.all(promises)
+    .then(function (results) {
+      self.course.teacherId = parseInt(self.selectedTeacher.id);
+      self.course.courseTagIds = self.selectedCourseTags.map(
+        function(courseTag) {
+          return courseTag.id;
+        });
+      return self.course;
+    })
+    .then(function(course) {
+      return coursesService.createCourse(course);
+    })
+    .then(function(course) {
       coreService.loadAll();
       $('#create_course').modal('hide');
       $('#create_course_success').modal('show');
+      self.course = {};
     });
-
-    var result = coursesService.createCourse(self.course);
-    self.course = {};
-    self.course.courseTagIds = '';
-    self.course.teacherId = '';
   }
 }]);

@@ -21,20 +21,28 @@ function ($rootScope, coreService) {
     }
   }
 
-  $rootScope.$on('Courses loaded',
-  function(event, courses) {
+  $rootScope.$on('All loaded', 
+  function (event) {
+    self.categories = $rootScope.courseTags;
+
     self.freshOtherCategoryCourses();
-    if (self.currentCategory) {
+    for (var category of $rootScope.courseTags) {
+      self.freshCategoryCourses(category);
+    }
+
+    if (!self.currentCategory) {
+      self.posts = $rootScope.posts;
+    } else if (!self.currentCourse) {
       if (self.currentCategory > 0) {
         var category = $rootScope.id2courseTag[self.currentCategory];
-        self.freshCategoryCourses(category);
+        self.freshCategoryPosts(category);
+      } else {
+        self.freshOtherCategoryPosts();
       }
+    } else {
+      var course = $rootScope.id2course[self.currentCourse];
+      self.freshCoursePosts(course);
     }
-  });
-
-  $rootScope.$on('Course tags loaded',
-  function(event, courseTags) {
-    self.categories = $rootScope.courseTags;
   });
 
   coreService.loadAll();
@@ -80,23 +88,6 @@ function ($rootScope, coreService) {
       }
     }
   }
-
-  $rootScope.$on('Posts loaded',
-  function(event, courses) {
-    if (!self.currentCategory) {
-      self.posts = $rootScope.posts;
-    } else if (!self.currentCourse) {
-      if (self.currentCategory > 0) {
-        var category = $rootScope.id2courseTag[self.currentCategory];
-        self.freshCategoryPosts(category);
-      } else {
-        self.freshOtherCategoryPosts();
-      }
-    } else {
-      var course = $rootScope.id2course[self.currentCourse];
-      self.freshCoursePosts(course);
-    }
-  });
 
   self.setCategory = function(category) {
     self.currentCategory = category.id;
