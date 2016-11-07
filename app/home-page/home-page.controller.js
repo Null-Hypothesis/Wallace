@@ -94,6 +94,7 @@ function ($rootScope, coreService) {
     self.categoryTitle = category.name;
     self.currentCourse = undefined;
     self.courseTitle = undefined;
+    self.courseId = undefined;
     self.freshCategoryCourses(category);
     self.freshCategoryPosts(category);
   }
@@ -101,6 +102,7 @@ function ($rootScope, coreService) {
   self.setCourse = function(course) {
     self.currentCourse = course.id;
     self.courseTitle = course.name;
+    self.courseId = course.courseId;
     self.freshCoursePosts(course);
   }
 
