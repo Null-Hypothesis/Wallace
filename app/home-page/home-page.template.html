@@ -2,8 +2,8 @@
   <div class="container">
     <div class="containerNarrow">
       <h2 class="Hero-title" align="center">{{homePage.categoryTitle}}</h2>
-      <div class="Hero-subtitle" align="center">{{homePage.courseTitle}}</div>
-      <div class="Hero-subtitle" align="center">{{homePage.courseId}}</div>
+      <!-- <div class="Hero-subtitle" align="center">{{homePage.courseTitle}}</div> -->
+      <!-- <div class="Hero-subtitle" align="center">{{homePage.courseId}}</div> -->
     </div>
   </div>
 </header>
@@ -75,8 +75,11 @@
   <div class="IndexPage-results sideNavOffset">
     <div class="DiscussionList">
       <ul class="DiscussionList-discussions">
+      <table>
+      </table>
         <li ng-repeat="post in homePage.posts | orderBy : post.updatedAt : true">
-          <post-preview post-id="post.id"></post-preview>  
+          <post-preview post-id="post.id">
+          </post-preview>  
         </li>
       </ul>
     </div>
