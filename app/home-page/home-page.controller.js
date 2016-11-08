@@ -35,21 +35,21 @@ function ($rootScope, coreService) {
       self.posts = $rootScope.posts;
     } else if (!self.currentCourse) {
       if (self.currentCategory > 0) {
-        var category = $rootScope.id2courseTag[self.currentCategory];
+        var category = self.currentCategory;
         self.freshCategoryPosts(category);
       } else {
         self.freshOtherCategoryPosts();
       }
     } else {
-      var course = $rootScope.id2course[self.currentCourse];
-      self.freshCoursePosts(course);
+      self.freshCoursePosts(self.currentCourse);
     }
+    console.log(self.posts);
   });
 
   coreService.loadAll();
 
   self.isCategory = function(category) {
-    return category.id === self.currentCategory;
+    return self.currentCategory && (category.id === self.currentCategory.id);
   }
 
   self.freshCategoryCourses = function(category) {
@@ -91,21 +91,15 @@ function ($rootScope, coreService) {
   }
 
   self.setCategory = function(category) {
-    self.currentCategory = category.id;
+    self.currentCategory = category;
     self.categoryTitle = category.name;
     self.currentCourse = undefined;
-    self.courseTitle = undefined;
-    self.courseId = undefined;
-    self.courseDescription = undefined;
     self.freshCategoryCourses(category);
     self.freshCategoryPosts(category);
   }
 
   self.setCourse = function(course) {
-    self.currentCourse = course.id;
-    self.courseTitle = course.name;
-    self.courseId = course.courseId;
-    self.courseDescription = course.description;
+    self.currentCourse = course;
     self.freshCoursePosts(course);
   }
 
@@ -118,7 +112,8 @@ function ($rootScope, coreService) {
   };
 
   self.selectOtherCategory = function() {
-    self.currentCategory = 0;
+    self.currentCategory = {};
+    self.currentCategory.id = 0;
     self.categoryTitle = 'Other';
     self.freshOtherCategoryPosts();
   };

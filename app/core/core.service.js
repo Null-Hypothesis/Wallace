@@ -2,9 +2,11 @@
 
 angular.module('myApp.core')
 .factory('myApp.core.service', ['$rootScope', '$sce',
-  'myApp.courses.courseTagsService',
-  'myApp.courses.coursesService', 'myApp.posts.postTagsService', 'myApp.posts.postsService',
-function($rootScope, $sce, courseTagsService, coursesService, postTagsService, postsService) {
+  'myApp.courses.courseTagsService', 'myApp.courses.coursesService',
+  'myApp.posts.postTagsService', 'myApp.posts.postsService',
+  'myApp.teachers.teachersService',
+function($rootScope, $sce,
+  courseTagsService, coursesService, postTagsService, postsService, teachersService) {
   var service = {};
 
   service.buildIndex = function(arr) {
@@ -25,19 +27,11 @@ function($rootScope, $sce, courseTagsService, coursesService, postTagsService, p
   service.loadAll = function() {
     var finishedTask = 0;
     var testTaskFinished = function() {
-      if (++finishedTask == 4) {
+      if (++finishedTask == 5) {
         $rootScope.$broadcast('All loaded');
       };
     }
 
-    $rootScope.$on('Course tags loaded', function(event, courseTags) {
-      $rootScope.id2courseTag = service.buildIndex(courseTags);
-      testTaskFinished();
-    });
-    $rootScope.$on('Post tags loaded', function(event, postTags) {
-      $rootScope.id2postTag = service.buildIndex(postTags);
-      testTaskFinished();
-    });
     $rootScope.$on('Courses loaded', function(event, courses) {
       $rootScope.id2course = service.buildIndex(courses);
       testTaskFinished();
@@ -46,11 +40,24 @@ function($rootScope, $sce, courseTagsService, coursesService, postTagsService, p
       $rootScope.id2post = service.buildIndex(posts);
       testTaskFinished();
     });
+    $rootScope.$on('Course tags loaded', function(event, courseTags) {
+      $rootScope.id2courseTag = service.buildIndex(courseTags);
+      testTaskFinished();
+    });
+    $rootScope.$on('Post tags loaded', function(event, postTags) {
+      $rootScope.id2postTag = service.buildIndex(postTags);
+      testTaskFinished();
+    });
+    $rootScope.$on('Teachers loaded', function(event, teachers) {
+      $rootScope.id2teacher = service.buildIndex(teachers);
+      testTaskFinished();
+    });
 
+    $rootScope.courses = coursesService.listAllCourses();
     $rootScope.courseTags = courseTagsService.listAllCourseTags();
     $rootScope.postTags = postTagsService.listAllPostTags();
-    $rootScope.courses = coursesService.listAllCourses();
     $rootScope.posts = postsService.listAllPosts();
+    $rootScope.teachers = teachersService.listAllTeachers();
   };
 
   service.renderHtml = function(htmlCode) {

@@ -58,7 +58,7 @@
           <span class="icon TagIcon Button-icon" style="background-color: {{0 | bgColor}};"></span>
             Other
           </a>
-          <ul class="Dropdown-menu dropdown-menu" ng-show="homePage.currentCategory === 0">
+          <ul class="Dropdown-menu dropdown-menu" ng-show="homePage.currentCategory.id === 0">
             <li class="item-tag" ng-repeat="course in homePage.otherCourses">
               <a class="TagLinkButton hasIcon child" style="" title="" ng-click="homePage.setCourse(course)">
                 <span class="icon TagIcon Button-icon"></span>
@@ -73,6 +73,32 @@
     </ul>
   </nav>
   <div class="IndexPage-results sideNavOffset">
+    <div ng-show="homePage.currentCourse">
+      <table class="CourseInfo">
+        <tbody>
+          <tr>
+            <th>Course name</th>
+            <th> : </th>
+            <th>{{homePage.currentCourse.name}}</th>
+          </tr>
+          <tr>
+            <th>Course No.</th>
+            <th> : </th>
+            <th>{{homePage.currentCourse.courseId}}</th>
+          </tr>
+          <tr>
+            <th>Teacher</th>
+            <th> : </th>
+            <th>{{$root.id2teacher[homePage.currentCourse.teacherId].name}}</th>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <th> : </th>
+            <th>{{homePage.currentCourse.description}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="DiscussionList">
       <ul class="DiscussionList-discussions">
       <table>
@@ -88,4 +114,4 @@
 
 <new-course></new-course>
 
-<new-post course-id="homePage.currentCourse"></new-post>
+<new-post course-id="homePage.currentCourse.id"></new-post>

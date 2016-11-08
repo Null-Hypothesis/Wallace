@@ -24,6 +24,22 @@
   padding-right: 0.3em;
 }
 
+.CourseInfo {
+  margin-bottom: 30px;
+}
+
+.CourseInfo > tbody > tr {
+  padding: 15px;
+}
+
+.CourseInfo > tbody > tr > th {
+  text-align: left;
+  font-size: 15px;
+  font-weight: normal;
+  padding: 5px;
+  color: #8c8c8c;
+}
+
 .DiscussionListItem-info .item-tags {
   position: absolute;
   margin-right: 0;
@@ -35,8 +51,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  line-height: 16px;     /* fallback */
-  max-height: 32px;      /* fallback */
+  /* line-height: 16px;     /* fallback */
+  /* max-height: 32px;      /* fallback */
   -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
