@@ -8,6 +8,11 @@ angular.module('myApp.user', [
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
+  .when('/user-view', {
+    templateUrl: 'user/user-view.template.html',
+    controller: 'myApp.user.userView',
+    controllerAs: 'userView'
+  })
   .when('/sign-up', {
     templateUrl: 'user/sign-up.template.html',
     controller: 'myApp.user.signUp',
