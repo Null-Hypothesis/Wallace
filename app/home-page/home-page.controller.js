@@ -43,7 +43,6 @@ function ($rootScope, coreService) {
     } else {
       self.freshCoursePosts(self.currentCourse);
     }
-    console.log(self.posts);
   });
 
   coreService.loadAll();

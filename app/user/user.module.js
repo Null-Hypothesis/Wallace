@@ -3,7 +3,8 @@
 // Define the `user` module
 angular.module('myApp.user', [
   'myApp.navBar',
-  'myApp.core'
+  'myApp.core',
+  'myApp.posts'
 ])
 
 .config(['$routeProvider', function($routeProvider) {

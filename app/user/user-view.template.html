@@ -1,10 +1,10 @@
-<header class="Hero TagHero TagHero--colored" style="color: rgb(255, 255, 255); background-color: rgb(152, 115, 158);">
+<header class="Hero TagHero TagHero--colored" style="color: rgb(255, 255, 255); background-color: {{userView.user.name | darkBgColor}};">
   <div class="container">
     <div class="containerNarrow">
 		<div class="UserCard-profile">
 		  <h2 class="UserCard-identity">
 		    <div class="AvatarEditor Dropdown UserCard-avatar">
-		      <span class="Avatar " style="background: rgb(213, 160, 255);">S</span>
+		      <span class="Avatar " style="background: {{userView.user.name | bgColor}};">{{userView.firstCharUpperCase(userView.user.name)}}</span>
 		      <a class="Dropdown-toggle" data-toggle="dropdown">
 		        <i class="icon fa fa-fw fa-pencil "></i>
 		      </a>
@@ -21,13 +21,13 @@
 		        </li>
 		      </ul>
 		    </div>
-		    <span class="username">suhang</span></h2>
+		    <span class="username">{{userView.user.name}}</span>
+        <span class="">({{userView.user.email}})</span></h2>
 		  <ul class="UserCard-info">
 		    <li class="item-bio">
 		      <div class="UserBio editable">
 		        <div class="UserBio-content">
-		          <p class="UserBio-placeholder">suhang1994@gmail.com</p>
-		          <p class="UserBio-placeholder">学霸太屌了呀</p>
+		          <p class="UserBio-placeholder">{{userView.user.description}}</p>
 		         </div>
 		      </div>
 		    </li>
@@ -41,22 +41,36 @@
   </div>
 </header>
 <div class="container">
-  <nav class="IndexPage-nav sideNav">
-    <ul>
-        <li class="item-tag">
-          <a class="TagLinkButton hasIcon " style="" title="" ng-click="homePage.clearCategory()">
-          <span class="icon TagIcon Button-icon" style="background-color: {{7 | bgColor}};"></span>
-           All posts
-          </a>
-        </li>
+  <nav class="sideNav UserPage-nav">
+    <ul class="affix-top">
+      <li class="item-nav">
+        <div class="ButtonGroup Dropdown dropdown App-titleControl Dropdown--select itemCount3">
+          <!--<button class="Dropdown-toggle Button" data-toggle="dropdown">
+            <span class="Button-label">Posts</span>
+            <i class="icon fa fa-fw fa-sort Button-caret"></i>
+          </button>-->
+          <ul class="Dropdown-menu dropdown-menu ">
+            <li class="item-posts active">
+              <a href="" active="true" class=" hasIcon" type="button">
+                <i class="icon fa fa-fw fa-comment-o Button-icon"></i>
+                <span class="Button-label">Posts<span class="Button-badge">{{userView.posts.length}}</span></span>
+              </a>
+            </li>
+            <li class="item-mentions">
+              <a href="" name="mentions" active="false" class=" hasIcon" type="button">
+                <i class="icon fa fa-fw fa-at Button-icon"></i>
+                <span class="Button-label">Mentions</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
     </ul>
   </nav>
   <div class="IndexPage-results sideNavOffset">
     <div class="DiscussionList">
       <ul class="DiscussionList-discussions">
-      <table>
-      </table>
-        <li ng-repeat="post in homePage.posts | orderBy : post.updatedAt : true">
+        <li ng-repeat="post in userView.posts | orderBy : post.updatedAt : true">
           <post-preview post-id="post.id">
           </post-preview>  
         </li>
@@ -64,6 +78,7 @@
     </div>
   </div>
 </div>
+
 
 <new-course></new-course>
 

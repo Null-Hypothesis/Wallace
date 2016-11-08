@@ -6,8 +6,8 @@ angular.module('myApp.posts')
 function($rootScope, coreService) {
   var self = this;
 
+  self.post = $rootScope.id2post[self.postId];
+
   self.renderHtml = coreService.renderHtml;
   self.firstCharUpperCase = coreService.firstCharUpperCase;
-  
-  self.post = $rootScope.id2post[self.postId];
 }]);
