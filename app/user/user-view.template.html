@@ -1,1 +1,70 @@
-test
+<header class="Hero TagHero TagHero--colored" style="color: rgb(255, 255, 255); background-color: rgb(152, 115, 158);">
+  <div class="container">
+    <div class="containerNarrow">
+		<div class="UserCard-profile">
+		  <h2 class="UserCard-identity">
+		    <div class="AvatarEditor Dropdown UserCard-avatar">
+		      <span class="Avatar " style="background: rgb(213, 160, 255);">S</span>
+		      <a class="Dropdown-toggle" data-toggle="dropdown">
+		        <i class="icon fa fa-fw fa-pencil "></i>
+		      </a>
+		      <ul class="Dropdown-menu Menu">
+		        <li class="item-upload">
+		          <button class=" hasIcon" type="button">
+		            <i class="icon fa fa-fw fa-upload Button-icon"></i>
+		            <span class="Button-label">Upload</span></button>
+		        </li>
+		        <li class="item-remove">
+		          <button class=" hasIcon" type="button">
+		            <i class="icon fa fa-fw fa-times Button-icon"></i>
+		            <span class="Button-label">Remove</span></button>
+		        </li>
+		      </ul>
+		    </div>
+		    <span class="username">suhang</span></h2>
+		  <ul class="UserCard-info">
+		    <li class="item-bio">
+		      <div class="UserBio editable">
+		        <div class="UserBio-content">
+		          <p class="UserBio-placeholder">suhang1994@gmail.com</p>
+		          <p class="UserBio-placeholder">学霸太屌了呀</p>
+		         </div>
+		      </div>
+		    </li>
+		    <li class="item-lastSeen">
+		      <span class="UserCard-lastSeen online">
+		        <i class="icon fa fa-fw fa-circle "></i>Online</span>
+		    </li>
+		    <li class="item-joined">Joined a few seconds ago</li></ul>
+		</div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <nav class="IndexPage-nav sideNav">
+    <ul>
+        <li class="item-tag">
+          <a class="TagLinkButton hasIcon " style="" title="" ng-click="homePage.clearCategory()">
+          <span class="icon TagIcon Button-icon" style="background-color: {{7 | bgColor}};"></span>
+           All posts
+          </a>
+        </li>
+    </ul>
+  </nav>
+  <div class="IndexPage-results sideNavOffset">
+    <div class="DiscussionList">
+      <ul class="DiscussionList-discussions">
+      <table>
+      </table>
+        <li ng-repeat="post in homePage.posts | orderBy : post.updatedAt : true">
+          <post-preview post-id="post.id">
+          </post-preview>  
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<new-course></new-course>
+
+<new-post course-id="homePage.currentCourse"></new-post>
