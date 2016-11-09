@@ -15,14 +15,8 @@
         {{$root.id2course[postPreview.post.courseId].name}}: {{postPreview.post.title}}
       </h3>
       <ul class="DiscussionListItem-info">
-        <li class="item-tags" ng-show="post.postTagIds.length > 0">
-          <span class="TagsLabel">
-            <span class="TagLabel colored" ng-repeat="postTagId in post.postTagIds" style="color: rgb(242, 194, 190); background: {{postTagId | bgColor}}; color:{{postTagId | textColor}};">
-              <span class="TagLabel-text">
-                {{$root.id2postTag[postTagId].name}}
-              </span>
-            </span>
-          </span>
+        <li class="item-tags" ng-show="postPreview.post.postTagIds.length > 0">
+          <tag-capsules id2tag="$root.id2postTag" ids="postPreview.post.postTagIds"></tag-capsules>
         </li>
         <li class="item-terminalPost">
           <h6>
@@ -30,7 +24,7 @@
               by <span class="username">{{postPreview.post.user.name}}</span>
               <i class="icon fa fa-fw fa-reply "></i>
               updated
-              <time pubdate="true" datetime="{{post.updatedAt}}" title="{{post.updatedAt | date}}" data-humantime="true" >{{postPreview.post.updatedAt | date}}</time>
+              <time pubdate="true" datetime="{{postPreview.post.updatedAt}}" title="{{postPreview.post.updatedAt | date}}" data-humantime="true" >{{postPreview.post.updatedAt | date}}</time>
             </span>
           </h6>
         </li>

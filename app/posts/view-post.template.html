@@ -2,24 +2,14 @@
   <div class="container">
     <div class="containerNarrow">
       <h4 class="item-tags" align="center">
-        <span class="TagsLabel" 
-        ng-repeat="courseTag in $root.id2course[viewPost.post.courseId].courseTagIds">
-          <span class="TagLabel colored" style="background: {{courseTag | bgColor}}; color:{{courseTag | textColor}};">
-            <span class="TagLabel-text" >{{$root.id2courseTag[courseTag].name}}</span>
-          </span>
-        </span>
+        <tag-capsules id2tag="$root.id2courseTag" ids="$root.id2course[viewPost.post.courseId].courseTagIds"></tag-capsules>
         <span class="TagLabel-text">{{$root.id2course[viewPost.post.courseId].name}}</span>  
       </h4>
       <h2 class="Hero-title" align="center">
         {{viewPost.post.title}}
       </h2>
       <h4 class="item-tags" align="center">
-        <span class="TagsLabel" 
-          ng-repeat="postTag in viewPost.post.postTagIds">
-            <span class="TagLabel colored" style="background: {{postTag | bgColor}}; color:{{postTag | textColor}};">
-              <span class="TagLabel-text" >{{$root.id2postTag[postTag].name}}</span>
-            </span>
-          </span>
+        <tag-capsules id2tag="$root.id2postTag" ids="viewPost.post.postTagIds"></tag-capsules>
       </h4>
     </div>
   </div>
