@@ -5,5 +5,4 @@ angular.module('myApp.core')
 .controller('myApp.core.tagCapsules', ['$rootScope', 'myApp.core.service',
 function($rootScope, coreService) {
   var self = this;
-  console.log(self);
 }]);
