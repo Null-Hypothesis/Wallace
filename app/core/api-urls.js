@@ -2,7 +2,8 @@
 
 this.apiUrls = {};
 
-this.apiUrls.root = 'http://sedemo.carbon941030.tk:8081/api/v1';
+//this.apiUrls.root = 'http://sedemo.carbon941030.tk:8081/api/v1';
+this.apiUrls.root = 'http://10.131.235.12:3000/api/v1';
 this.apiUrls.signUp = apiUrls.root + '/users';
 this.apiUrls.signIn = apiUrls.signUp + '/token';
 this.apiUrls.logOut = apiUrls.signIn;
