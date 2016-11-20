@@ -19,7 +19,7 @@
 
   <div class="DiscussionPage-stream">
     <div class="PostStream">
-      <div class="PostStream-item" data-index="0" data-time="2016-10-21T13:31:40.000Z" data-number="1" data-id="4615" data-type="comment" style="display: block;">
+      <div class="PostStream-item" data-index="0" data-type="comment" style="display: block;">
         <article class="Post CommentPost Post--edited">
           <div>
             <header class="Post-header">
@@ -85,6 +85,102 @@
           </div>
         </article>
       </div>
+
+      <div class="PostStream-item" data-index="1" data-time="2016-11-19T08:11:07.000Z" data-number="2" data-id="4784" data-type="comment" style="display: block;">
+        <article class="Post CommentPost">
+          <div>
+            <header class="Post-header">
+              <ul>
+                <li class="item-user">
+                  <div class="PostUser">
+                    <h3>
+                      <!--<a href="">
+                        <img class="Avatar PostUser-avatar" src="https://async.icpc-camp.org/assets/avatars/2878dfb7b5a544d5b85051494be38948.png">
+                        <span class="username">zimpha</span>
+                      </a>-->
+                      <a href="">
+                        <span class="Avatar PostUser-avatar" style="background: {{viewPost.post.user.name | bgColor}}; color:{{viewPost.post.user.name | textColor}};">
+                          {{viewPost.firstCharUpperCase(viewPost.post.user.name)}}
+                        </span>
+                        <span class="username">{{viewPost.post.user.name}}</span>
+                      </a>
+                    </h3>
+                    <ul class="PostUser-badges badges">
+                      <!--<li class="item-group4">
+                        <span class="Badge Badge--group--Mod " title="" style="background-color: rgb(128, 52, 158);" data-original-title="Mod">
+                          <i class="icon fa fa-fw fa-bolt Badge-icon"></i>
+                        </span>
+                      </li>-->
+                    </ul>
+                  </div>
+                </li>
+                <li class="item-meta">
+                  <div class="Dropdown PostMeta">
+                    <a class="Dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                      <time pubdate="true" datetime="2016-11-19T16:11:07+08:00" title="Saturday, November 19, 2016 4:11 PM" data-humantime="true">8 hours ago</time>
+                    </a>
+                    <div class="Dropdown-menu dropdown-menu">
+                      <span class="PostMeta-number">Post #2</span>
+                      <time pubdate="true" datetime="2016-11-19T16:11:07+08:00">
+                        Saturday, November 19, 2016 4:11 PM
+                      </time>
+                      <input class="FormControl PostMeta-permalink">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </header>
+            <div class="Post-body">
+              <p>
+                这个paper说不定有用:
+              </p>
+            </div>
+            <!--<aside class="Post-actions">
+              <ul>
+                <li class="item-like">
+                  <button class="Button Button--link" type="button">
+                    <span class="Button-label">Like</span>
+                  </button>
+                </li>
+                <li class="item-reply">
+                  <button class="Button Button--link" type="button">
+                    <span class="Button-label">Reply</span>
+                  </button>
+                </li>
+              </ul>
+            </aside>-->
+            <footer class="Post-footer">
+              <ul></ul>
+            </footer>
+          </div>
+          <ul class="Dropdown-menu PostMention-preview fade"></ul>
+        </article>
+      </div>
+      
+      <div class="PostStream-item">
+        <article class="Post">
+          <header class="Post-header">
+            <span class="Avatar PostUser-avatar" style="background: {{viewPost.post.user.name | bgColor}}; color:{{viewPost.post.user.name | textColor}};">
+              {{viewPost.firstCharUpperCase(viewPost.post.user.name)}}
+            </span>
+            <h5>
+              <i class="icon fa fa-fw fa-reply "></i>
+              <a href="">Beijing 2016 A</a>
+            </h5>
+          </header>
+          <div class="Post-body">
+            <form>
+              <div class="form-group">
+                <text-angular id='comment'></text-angular>
+              </div>
+              <div class="form-group" style="right: 0px;">
+                <button type="submit" class="btn btn-default pull-right" >Submit</button>
+              </div>
+            </form>
+          </div>
+        </article>
+      </div>
+
     </div>
   </div>
 </div>
