@@ -34,7 +34,7 @@ function($rootScope, $sce,
 
     $rootScope.$on('Courses loaded', function(event, courses) {
       $rootScope.id2course = service.buildIndex(courses);
-      testTaskFinished();
+      testTaskFinished('course');
     });
     $rootScope.$on('Posts loaded', function(event, posts) {
       $rootScope.id2post = service.buildIndex(posts);

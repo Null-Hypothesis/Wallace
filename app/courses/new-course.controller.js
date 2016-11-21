@@ -9,7 +9,7 @@ function($rootScope, $q, coursesService, coreService, teachersService, courseTag
   var self = this;
 
   self.course = {};
-  self.teachers = teachersService.listAllTeachers();
+  self.teachers = $rootScope.teachers;
   self.courseTags = $rootScope.courseTags;
   self.selectedTeacher = {};
   self.selectedCourseTags = [];
@@ -57,7 +57,7 @@ function($rootScope, $q, coursesService, coreService, teachersService, courseTag
       $('#create_course').modal('hide');
       $('#create_course_success').modal('show');
       self.course = {};
-      self.self.teachers = teachersService.listAllTeachers();
+      self.teachers = teachersService.listAllTeachers();
       self.courseTags = $rootScope.courseTags;
       self.selectedTeacher = {};
       self.selectedCourseTags = [];

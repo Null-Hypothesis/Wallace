@@ -1,3 +1,5 @@
+<nav-bar></nav-bar>
+
 <header class="Hero TagHero TagHero--colored" style="color: rgb(255, 255, 255); background-color: rgb(0, 160, 232);">
   <div class="container">
     <div class="containerNarrow">
@@ -72,6 +74,7 @@
       </li>
     </ul>
   </nav>
+  <!-- Course Description -->
   <div class="IndexPage-results sideNavOffset">
     <div ng-show="homePage.currentCourse">
       <table class="CourseInfo">
@@ -108,7 +111,7 @@
       <ul class="DiscussionList-discussions">
       <table>
       </table>
-        <li ng-repeat="post in homePage.posts | orderBy : post.updatedAt : true">
+        <li ng-repeat="post in homePage.posts | filter : homePage.postQueryString | orderBy : post.updatedAt : true">
           <post-preview post-id="post.id">
           </post-preview>  
         </li>

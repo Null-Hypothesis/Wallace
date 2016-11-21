@@ -2,10 +2,11 @@
 
 angular.module('myApp.homePage')
 
-.controller('myApp.homePage.controller', ['$rootScope', 'myApp.core.service',
-function ($rootScope, coreService) {
+.controller('myApp.homePage.controller', ['$rootScope', '$routeParams', 'myApp.core.service',
+function ($rootScope, $routeParams, coreService) {
   var self = this;
 
+  self.postQueryString = $routeParams.query;
   self.categoryTitle = 'Latest posts';
   self.courseTitle = undefined;
   self.currentCategory = undefined;
@@ -42,6 +43,10 @@ function ($rootScope, coreService) {
       }
     } else {
       self.freshCoursePosts(self.currentCourse);
+    }
+
+    for (var post of $rootScope.posts) {
+      post.courseName = $rootScope.id2course[post.courseId].name;
     }
   });
 
@@ -90,6 +95,7 @@ function ($rootScope, coreService) {
   }
 
   self.setCategory = function(category) {
+    self.postQueryString = undefined;
     self.currentCategory = category;
     self.categoryTitle = category.name;
     self.currentCourse = undefined;
@@ -98,11 +104,13 @@ function ($rootScope, coreService) {
   }
 
   self.setCourse = function(course) {
+    self.postQueryString = undefined;
     self.currentCourse = course;
     self.freshCoursePosts(course);
   }
 
   self.clearCategory = function() {
+    self.postQueryString = undefined;
     self.currentCategory = undefined;
     self.currentCourse = undefined;
     self.categoryTitle = 'Latest posts';
@@ -111,6 +119,7 @@ function ($rootScope, coreService) {
   };
 
   self.selectOtherCategory = function() {
+    self.postQueryString = undefined;
     self.currentCategory = {};
     self.currentCategory.id = 0;
     self.categoryTitle = 'Other';

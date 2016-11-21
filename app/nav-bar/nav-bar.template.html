@@ -21,11 +21,11 @@
         <li><a href="#!/user-view">Welcome {{$root.user.name}}!</a></li>
         <li><a href="#!/log-out">Log out</a></li>
       </ul>
-      <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right" role="search" ng-submit="navBar.clickSearch(navBar.searchQuery)">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search" ng-model="navBar.searchQuery">
         </div>
-        <button type="submit" class="btn btn-default">搜索</button>
+        <button type="submit" class="btn btn-default">Search</button>
       </form>
     </div><!--/.nav-collapse -->
   </div>
