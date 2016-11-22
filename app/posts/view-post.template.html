@@ -19,6 +19,51 @@
 
 <div class="container">
 
+  <nav class="DiscussionPage-nav">
+    <ul>
+      <li class="item-controls">
+        <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1">
+          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button">
+            <i class="icon fa fa-fw fa-reply Button-icon"></i>
+            <span class="Button-label">Reply</span>
+          </button>
+        </div>
+      </li>
+      <!--<li class="item-scrubber">
+        <div class="PostStreamScrubber Dropdown App-titleControl">
+          <button class="Button Dropdown-toggle" data-toggle="dropdown">
+            <span class="Scrubber-index">1</span> of <span class="Scrubber-count">21</span> posts <i class="icon fa fa-fw fa-sort "></i>
+          </button>
+          <div class="Dropdown-menu dropdown-menu">
+            <div class="Scrubber">
+              <a class="Scrubber-first">
+                <i class="icon fa fa-fw fa-angle-double-up "></i>
+                Original Post
+              </a>
+              <div class="Scrubber-scrollbar" style="max-height: 405px; cursor: pointer; user-select: none;">
+                <div class="Scrubber-before" style="height: 0%;"></div>
+                <div class="Scrubber-handle" style="cursor: move; height: 16.6667%;">
+                  <div class="Scrubber-bar"></div>
+                  <div class="Scrubber-info">
+                    <strong>
+                      <span class="Scrubber-index">1</span> of <span class="Scrubber-count">21</span> posts
+                    </strong>
+                    <span class="Scrubber-description">June 2016</span>
+                  </div>
+                </div>
+                <div class="Scrubber-after" style="height: 83.3333%;"></div>
+                <div class="Scrubber-unread" style="top: 100%; height: 0%;"> unread</div>
+              </div>
+              <a class="Scrubber-last">
+                <i class="icon fa fa-fw fa-angle-double-down "></i> Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>-->
+    </ul>
+  </nav>
+
   <div class="DiscussionPage-stream">
     <div class="PostStream">
       <div class="PostStream-item" data-index="0" data-type="comment" style="display: block;">
@@ -88,7 +133,8 @@
         </article>
       </div>
 
-      <div class="PostStream-item" data-index="1" data-time="2016-11-19T08:11:07.000Z" data-number="2" data-id="4784" data-type="comment" style="display: block;">
+      <!-- Replies -->
+      <div class="PostStream-item" data-index="1" data-type="comment" style="display: block;" ng-repeat="reply in viewPost.replies">
         <article class="Post CommentPost">
           <div>
             <header class="Post-header">
@@ -101,10 +147,10 @@
                         <span class="username">zimpha</span>
                       </a>-->
                       <a href="">
-                        <span class="Avatar PostUser-avatar" style="background: {{viewPost.post.user.name | bgColor}}; color:{{viewPost.post.user.name | textColor}};">
-                          {{viewPost.firstCharUpperCase(viewPost.post.user.name)}}
+                        <span class="Avatar PostUser-avatar" style="background: {{reply.user.name | bgColor}}; color:{{reply.user.name | textColor}};">
+                          {{viewPost.firstCharUpperCase(reply.user.name)}}
                         </span>
-                        <span class="username">{{viewPost.post.user.name}}</span>
+                        <span class="username">{{reply.user.name}}</span>
                       </a>
                     </h3>
                     <ul class="PostUser-badges badges">
@@ -119,12 +165,12 @@
                 <li class="item-meta">
                   <div class="Dropdown PostMeta">
                     <a class="Dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                      <time pubdate="true" datetime="2016-11-19T16:11:07+08:00" title="Saturday, November 19, 2016 4:11 PM" data-humantime="true">8 hours ago</time>
+                      <time pubdate="true" datetime="{{reply.updatedAt}}" title="{{reply.updatedAt | date}}" data-humantime="true">{{reply.updatedAt | date}}</time>
                     </a>
                     <div class="Dropdown-menu dropdown-menu">
                       <span class="PostMeta-number">Post #2</span>
-                      <time pubdate="true" datetime="2016-11-19T16:11:07+08:00">
-                        Saturday, November 19, 2016 4:11 PM
+                      <time pubdate="true" datetime="{{reply.updatedAt}}">
+                        {{reply.updatedAt | date}}
                       </time>
                       <input class="FormControl PostMeta-permalink">
                     </div>
@@ -133,9 +179,7 @@
               </ul>
             </header>
             <div class="Post-body">
-              <p>
-                这个paper说不定有用:
-              </p>
+              <p ng-bind-html="viewPost.renderHtml(reply.content)"></p>
             </div>
             <!--<aside class="Post-actions">
               <ul>
@@ -162,21 +206,21 @@
       <div class="PostStream-item">
         <article class="Post">
           <header class="Post-header">
-            <span class="Avatar PostUser-avatar" style="background: {{viewPost.post.user.name | bgColor}}; color:{{viewPost.post.user.name | textColor}};">
-              {{viewPost.firstCharUpperCase(viewPost.post.user.name)}}
+            <span class="Avatar PostUser-avatar" style="background: {{$root.user.name | bgColor}}; color:{{$root.user.name | textColor}};">
+              {{viewPost.firstCharUpperCase($root.user.name)}}
             </span>
             <h5>
               <i class="icon fa fa-fw fa-reply "></i>
-              <a href="">Beijing 2016 A</a>
+              <a href="">{{viewPost.post.title}}</a>
             </h5>
           </header>
           <div class="Post-body">
-            <form>
+            <form ng-submit="viewPost.submitReply(viewPost.replyContent)">
               <div class="form-group">
-                <text-angular id='comment'></text-angular>
+                <text-angular id='comment' ng-model="viewPost.replyContent"></text-angular>
               </div>
               <div class="form-group" style="right: 0px;">
-                <button type="submit" class="btn btn-default pull-right" >Submit</button>
+                <button type="submit" class="btn btn-default pull-right" >Reply</button>
               </div>
             </form>
           </div>

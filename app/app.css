@@ -24,6 +24,23 @@
   padding-right: 0.3em;
 }
 
+.ta-toolbar > .btn-group {
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin:3px 5px;
+}
+
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin:5px 0;
+}
+
 .CourseInfo {
   margin-bottom: 30px;
 }

@@ -99,5 +99,37 @@ function ($http, $rootScope, headerService) {
     return post;
   }
 
+  service.listAllReplies = function(postId) {
+    return $http({
+      method: 'GET',
+      url: apiUrls.posts + '/' + postId + '/replies',
+      headers: headerService.getHeader()
+    }).then(function successCallback(response) {
+      return response.data;
+    }, function errorCallback(error) {
+      console.log(error);
+    });
+  }
+
+
+  /**
+    * data: {
+    *   content,
+    *   user_id
+    * }
+    */
+  service.createReply = function(postId, data) {
+    return $http({
+      method: 'POST',
+      url: apiUrls.posts + '/' + postId + '/replies',
+      data: data,
+      headers: headerService.getHeader()
+    }).then(function successCallback(response) {
+      return response.data;
+    }, function errorCallback(error) {
+      console.log(error);
+    });
+  }
+
   return service;
 }]);
