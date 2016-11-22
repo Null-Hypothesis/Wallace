@@ -6,20 +6,16 @@ function ($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllPosts = function() {
-    var posts = [];
-
-    $http({
+    return $http({
       method: 'GET',
       url: apiUrls.posts,
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Array.prototype.push.apply(posts, response.data);
-      $rootScope.$broadcast('Posts loaded', posts);
+      $rootScope.$broadcast('Posts loaded', response.data);
+      return response.data;
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return posts;
   };
 
   /** 

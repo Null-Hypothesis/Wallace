@@ -9,7 +9,7 @@ function($routeParams, $rootScope, $sce, $route, coreService, postsService) {
 
   self.firstCharUpperCase = coreService.firstCharUpperCase;
 
-  coreService.loadAll();
+  coreService.loadMeta();
 
   self.postId = parseInt($routeParams.postId);
   self.post = postsService.getPostById(self.postId);

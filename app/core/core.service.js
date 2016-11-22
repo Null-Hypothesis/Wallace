@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('myApp.core')
-.factory('myApp.core.service', ['$rootScope', '$sce',
+.factory('myApp.core.service', ['$rootScope', '$sce', '$q',
   'myApp.courses.courseTagsService', 'myApp.courses.coursesService',
   'myApp.posts.postTagsService', 'myApp.posts.postsService',
   'myApp.teachers.teachersService',
-function($rootScope, $sce,
+function($rootScope, $sce, $q,
   courseTagsService, coursesService, postTagsService, postsService, teachersService) {
   var service = {};
 
@@ -24,40 +24,54 @@ function($rootScope, $sce,
     return name[0].toUpperCase();
   };
 
-  service.loadAll = function() {
-    var finishedTask = 0;
-    var testTaskFinished = function() {
-      if (++finishedTask == 5) {
-        $rootScope.$broadcast('All loaded');
-      };
-    }
+  service.loadMeta = function() {
+    var promises = [];
 
-    $rootScope.$on('Courses loaded', function(event, courses) {
+    promises.push(coursesService.listAllCourses()
+    .then(function(courses) {
+      $rootScope.courses = courses;
       $rootScope.id2course = service.buildIndex(courses);
-      testTaskFinished('course');
-    });
-    $rootScope.$on('Posts loaded', function(event, posts) {
-      $rootScope.id2post = service.buildIndex(posts);
-      testTaskFinished();
-    });
-    $rootScope.$on('Course tags loaded', function(event, courseTags) {
+    }));
+    
+    promises.push(courseTagsService.listAllCourseTags()
+    .then(function(courseTags) {
+      $rootScope.courseTags = courseTags;
       $rootScope.id2courseTag = service.buildIndex(courseTags);
-      testTaskFinished();
-    });
-    $rootScope.$on('Post tags loaded', function(event, postTags) {
+    }));
+    
+    promises.push(postTagsService.listAllPostTags()
+    .then(function(postTags) {
+      $rootScope.postTags = postTags;
       $rootScope.id2postTag = service.buildIndex(postTags);
-      testTaskFinished();
-    });
-    $rootScope.$on('Teachers loaded', function(event, teachers) {
+    })); 
+    
+    promises.push(teachersService.listAllTeachers()
+    .then(function(teachers) {
+      $rootScope.teachers = teachers;
       $rootScope.id2teacher = service.buildIndex(teachers);
-      testTaskFinished();
-    });
+    }));
 
-    $rootScope.courses = coursesService.listAllCourses();
-    $rootScope.courseTags = courseTagsService.listAllCourseTags();
-    $rootScope.postTags = postTagsService.listAllPostTags();
-    $rootScope.posts = postsService.listAllPosts();
-    $rootScope.teachers = teachersService.listAllTeachers();
+    return $q.all(promises)
+    .then(function (args) {
+      $rootScope.$broadcast('Meta loaded');
+    });
+  };
+
+  service.loadAll = function() {
+    var promises = [];
+
+    promises.push(postsService.listAllPosts()
+    .then(function(posts) {
+      $rootScope.posts = posts;
+      $rootScope.id2post = service.buildIndex(posts);
+    }));
+
+    promises.push(service.loadMeta());
+
+    return $q.all(promises)
+    .then(function (args) {
+      $rootScope.$broadcast('All loaded');
+    });
   };
 
   service.renderHtml = function(htmlCode) {

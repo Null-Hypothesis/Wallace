@@ -7,20 +7,16 @@ function($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllCourseTags = function() {
-    var courseTags = [];
-
-    $http({
+    return $http({
       method: 'GET',
       url: apiUrls.courseTags,
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Array.prototype.push.apply(courseTags, response.data);
-      $rootScope.$broadcast('Course tags loaded', courseTags);
+      $rootScope.$broadcast('Course tags loaded', response.data);
+      return response.data;
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return courseTags;
   };
 
   service.createCourseTag = function(name) {

@@ -23,8 +23,8 @@ function ($rootScope, $routeParams, coreService) {
     }
   }
 
-  $rootScope.$on('All loaded', 
-  function (event) {
+  coreService.loadAll()
+  .then(function () {
     self.categories = $rootScope.courseTags;
 
     self.freshOtherCategoryCourses();
@@ -49,8 +49,7 @@ function ($rootScope, $routeParams, coreService) {
       post.courseName = $rootScope.id2course[post.courseId].name;
     }
   });
-
-  coreService.loadAll();
+  
 
   self.isCategory = function(category) {
     return self.currentCategory && (category.id === self.currentCategory.id);

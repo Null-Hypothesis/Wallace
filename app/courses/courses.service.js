@@ -7,20 +7,16 @@ function($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllCourses = function() {
-    var courses = [];
-
-    $http({
+    return $http({
       method: 'GET',
       url: apiUrls.courses,
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Array.prototype.push.apply(courses, response.data);
-      $rootScope.$broadcast('Courses loaded', courses);
+      $rootScope.$broadcast('Courses loaded', response.data);
+      return response.data;
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return courses;
   };
 
   /** 

@@ -6,20 +6,16 @@ function ($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllPostTags = function() {
-    var postTags = [];
-
-    $http({
+    return $http({
       method: 'GET',
       url: apiUrls.postTags,
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
-      Array.prototype.push.apply(postTags, response.data);
-      $rootScope.$broadcast('Post tags loaded', postTags);
+      $rootScope.$broadcast('Post tags loaded', response.data);
+      return response.data;
     }, function errorCallback(error) {
       console.log(error);
     });
-
-    return postTags;
   }
 
   service.createPostTag = function(name) {
