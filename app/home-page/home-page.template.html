@@ -41,19 +41,20 @@
            All posts
           </a>
         </li>
-        <li class="item-tag" ng-repeat="category in homePage.categories">
+        <li class="item-tag" ng-repeat-start="category in homePage.categories">
           <a class="TagLinkButton hasIcon " style="" title="{{category.name}}" ng-click="homePage.setCategory(category)">
           <span class="icon TagIcon Button-icon" style="background-color: {{category.id | bgColor}};"></span>
             {{category.name}}
           </a>
           <ul class="Dropdown-menu dropdown-menu" ng-show="homePage.isCategory(category)">
-            <li class="item-tag" ng-repeat="course in category.courses">
-              <a class="TagLinkButton hasIcon child" style="" title="" ng-click="homePage.setCourse(course)">
-                <span class="icon TagIcon Button-icon"></span>
-                {{course.name}}
-              </a>
-            </li>
+            
           </ul>
+        </li>
+        <li class="item-tag" ng-show="homePage.isCategory(category)" ng-repeat="course in category.courses" ng-repeat-end>
+          <a class="TagLinkButton hasIcon child" style="" title="" ng-click="homePage.setCourse(course)">
+            <span class="icon TagIcon Button-icon"></span>
+            {{course.name}}
+          </a>
         </li>
         <li class="item-tag">
           <a class="TagLinkButton hasIcon " style="" title="Other" ng-click="homePage.selectOtherCategory()">

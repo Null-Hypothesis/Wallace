@@ -367,7 +367,7 @@ blockquote ol:last-child {
     padding: 0;
     list-style: none
 }
-@media (min-width: 768px) {
+@media (min-width: 0) {
     .sideNav .Dropdown--select {
         display: block
     }
@@ -443,7 +443,7 @@ blockquote ol:last-child {
 .sideNav--horizontal .affix {
     position: static
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 0px) and (max-width: 991px) {
     .sideNav {
         padding: 15px 0;
         white-space: nowrap;
@@ -553,7 +553,7 @@ blockquote ol:last-child {
     -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35)
 }
-@media (max-width: 767px) {
+@media (max-width: 0px) {
     .App-primaryControl,
     .App-titleControl,
     .App-backControl {
@@ -1358,7 +1358,7 @@ fieldset[disabled] .Button--danger {
         display: none
     }
 }
-@media (max-width: 767px) {
+@media (max-width: 0px) {
     .Dropdown.open {
         z-index: 1050
     }
