@@ -24,6 +24,11 @@ angular.module('myApp.user', [
     controller: 'myApp.user.signIn',
     controllerAs: 'signIn'
   })
+  .when('/message', {
+    templateUrl: 'user/message.template.html',
+    controller: 'myApp.user.message',
+    controllerAs: 'message'
+  })
   .when('/log-out', {
     templateUrl: 'user/log-out.template.html',
     controller: 'myApp.user.logOut'
