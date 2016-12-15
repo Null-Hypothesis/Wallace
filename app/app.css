@@ -161,6 +161,15 @@
     padding-bottom: 0px;
   }
 
+  .Discussion-count {
+    color: #aaa;
+    font-size: 16px;
+    position: absolute;
+    margin-right: 0;
+    right: 10px;
+    top: 21px;
+  }
+
   .DiscussionListItem-info > .item-tags {
     position: relative;
     left: 0px;
@@ -172,6 +181,10 @@
     position: relative;
     left: 0px;
     top: 0px;
+  }
+
+  .item-like > .like-button {
+    padding: 0px 13px 0px 0px;
   }
 
   .limit-line-text {
