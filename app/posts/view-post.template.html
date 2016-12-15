@@ -23,7 +23,7 @@
     <ul>
       <li class="item-controls">
         <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1">
-          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button">
+          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button" ng-click="viewPost.scrollTo('reply')">
             <i class="icon fa fa-fw fa-reply Button-icon"></i>
             <span class="Button-label">Reply</span>
           </button>
@@ -66,7 +66,7 @@
 
   <div class="DiscussionPage-stream">
     <div class="PostStream">
-      <div class="PostStream-item" data-index="0" data-type="comment" style="display: block;">
+      <div class="PostStream-item" data-index="0" data-type="comment" style="display: block;" id='post'>
         <article class="Post CommentPost Post--edited">
           <div>
             <header class="Post-header">
@@ -203,7 +203,7 @@
         </article>
       </div>
       
-      <div class="PostStream-item">
+      <div class="PostStream-item" id="reply">
         <article class="Post">
           <header class="Post-header">
             <span class="Avatar PostUser-avatar" style="background: {{$root.user.name | bgColor}}; color:{{$root.user.name | textColor}};">
@@ -211,7 +211,7 @@
             </span>
             <h5>
               <i class="icon fa fa-fw fa-reply "></i>
-              <a href="">{{viewPost.post.title}}</a>
+              <a ng-click="viewPost.scrollTo('post')">{{viewPost.post.title}}</a>
             </h5>
           </header>
           <div class="Post-body">

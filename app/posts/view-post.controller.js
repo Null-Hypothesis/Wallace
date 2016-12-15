@@ -2,14 +2,19 @@
 
 angular.module('myApp.posts')
 
-.controller('myApp.posts.viewPost', ['$routeParams', '$rootScope', '$sce', '$route',
+.controller('myApp.posts.viewPost', ['$routeParams', '$rootScope', '$sce', '$route', '$anchorScroll', '$location',
   'myApp.core.service', 'myApp.posts.postsService',
-function($routeParams, $rootScope, $sce, $route, coreService, postsService) {
+function($routeParams, $rootScope, $sce, $route, $anchorScroll, $location, coreService, postsService) {
   var self = this;
 
   self.firstCharUpperCase = coreService.firstCharUpperCase;
 
   coreService.loadMeta();
+
+  self.scrollTo = function(id) {
+    $anchorScroll.yOffset = 55;
+    $anchorScroll(id);
+  }
 
   self.postId = parseInt($routeParams.postId);
   self.post = postsService.getPostById(self.postId);

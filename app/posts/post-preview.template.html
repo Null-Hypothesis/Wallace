@@ -18,6 +18,11 @@
         <li class="item-tags" ng-show="postPreview.post.postTagIds.length > 0">
           <tag-capsules id2tag="$root.id2postTag" ids="postPreview.post.postTagIds"></tag-capsules>
         </li>
+        <!--
+        <li class="item-favourite">
+          <a><span><i class="icon fa fa-heart"></i></span></a>
+        </li>
+        -->
         <li class="item-terminalPost">
           <h6>
             <span>
@@ -40,6 +45,20 @@
         </li>
       </ul>
     </a>
+    <div>
+      <div class="item-like">
+        <button class="Button Button--link" type="button" style="padding: 0px 13px 0px 0px;">
+          <span class="Button-label">Like</span>
+          <i class="icon fa fa-heart-o"></i>
+        </button>
+      </div>
+    </div>
+    <!--
     <span class="DiscussionListItem-count" title="">{{postPreview.post.repliesCount + 1}}</span>
+    -->
+    <span class="Discussion-count">
+      <i class="icon fa fa-comment-o"></i>
+      {{postPreview.post.repliesCount + 1}}
+    </span>
   </div>
 </div>

@@ -60,8 +60,25 @@
 .DiscussionListItem-info .item-tags {
   position: absolute;
   margin-right: 0;
-  right: 70px;
+  right: 80px;
   top: 23px;
+}
+
+.Discussion-count {
+  color: #aaa;
+  font-size: 16px;
+  position: absolute;
+  margin-right: 0;
+  right: 40px;
+  top: 21px;
+}
+
+.item-like {
+  visibility: visible;
+  position: absolute;
+  margin-right: 0;
+  right: 70px;
+  bottom: 20px;
 }
 
 .limit-line-text {
@@ -140,10 +157,21 @@
     color: #8c8c8c;
   }
 
+  .DiscussionListItem-main {
+    padding-bottom: 0px;
+  }
+
   .DiscussionListItem-info > .item-tags {
     position: relative;
     left: 0px;
     top: 3px;
+  }
+
+  .item-like {
+    display: inline;
+    position: relative;
+    left: 0px;
+    top: 0px;
   }
 
   .limit-line-text {
@@ -162,5 +190,9 @@
 
   .ui-select-container > input[type="search"] {
     box-sizing: border-box;
+  }
+
+  .DiscussionPage-nav > ul > li.item-controls, .DiscussionPage-nav > ul > li.item-scrubber {
+    margin: 10px;
   }
 }

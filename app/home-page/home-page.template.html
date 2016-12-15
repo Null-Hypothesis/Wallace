@@ -61,14 +61,12 @@
           <span class="icon TagIcon Button-icon" style="background-color: {{0 | bgColor}};"></span>
             Other
           </a>
-          <ul class="Dropdown-menu dropdown-menu" ng-show="homePage.currentCategory.id === 0">
-            <li class="item-tag" ng-repeat="course in homePage.otherCourses">
-              <a class="TagLinkButton hasIcon child" style="" title="" ng-click="homePage.setCourse(course)">
-                <span class="icon TagIcon Button-icon"></span>
-                {{course.name}}
-              </a>
-            </li>
-          </ul>
+        </li>
+        <li class="item-tag" ng-repeat="course in homePage.otherCourses" ng-show="homePage.currentCategory.id === 0">
+          <a class="TagLinkButton hasIcon child" style="" title="" ng-click="homePage.setCourse(course)">
+            <span class="icon TagIcon Button-icon"></span>
+            {{course.name}}
+          </a>
         </li>
       </ul>
       </div>
