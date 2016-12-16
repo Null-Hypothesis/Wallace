@@ -81,13 +81,39 @@
       </li>
     </ul>
   </nav>
-   <div class="IndexPage-results sideNavOffset">
-    <div class="DiscussionList">
-      <ul class="DiscussionList-discussions">
-        <li ng-repeat="post in userView.posts | orderBy : post.updatedAt : true">
-          <post-preview post-id="post.id">
-          </post-preview>  
-        </li>
-      </ul>
+<article class="Post CommentPost"> 
+   <div>
+    <header class="Post-header">
+     <ul>
+      <li class="item-user">
+       <div class="PostUser">
+        <h3><a href="/u/xiaojudou"><img class="Avatar PostUser-avatar" src="https://async.icpc-camp.org/assets/avatars/db2c0ce4fd6b0172ed912126a515e80f.png" /> <span class="username">xiaojudou</span></a></h3>
+        <ul class="PostUser-badges badges">
+         <li class="item-group1"><span class="Badge Badge--group--Admin " title="" style="background-color: rgb(183, 42, 42);" data-original-title="Admin"><i class="icon fa fa-fw fa-wrench Badge-icon"></i></span></li> 
+        </ul>
+       </div></li> 
+      <li class="item-meta">
+       <div class="Dropdown PostMeta">
+        <a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-11-23T00:13:41+08:00" title="Wednesday, November 23, 2016 12:13 AM" data-humantime="true">24 days ago</time></a>
+        <div class="Dropdown-menu dropdown-menu">
+         <span class="PostMeta-number">Post #8</span> 
+         <time pubdate="true" datetime="2016-11-23T00:13:41+08:00">Wednesday, November 23, 2016 12:13 AM</time>
+         <input class="FormControl PostMeta-permalink" />
+        </div>
+       </div></li> 
+     </ul>
+    </header>
+    <div class="Post-body">
+     <p>你好 想和你交个旁友</p>
     </div>
-  </div>
+    <aside class="Post-actions">
+     <ul>
+      <li class="item-like"><button class="Button Button--link" type="button"><span class="Button-label">Like</span></button></li> 
+      <li class="item-reply"><button class="Button Button--link" type="button"><span class="Button-label">Reply</span></button></li> 
+     </ul>
+    </aside>
+    <footer class="Post-footer">
+     <ul></ul>
+    </footer>
+   </div>
+  </article>
