@@ -14,6 +14,11 @@ angular.module('myApp.user', [
     controller: 'myApp.user.userView',
     controllerAs: 'userView'
   })
+  .when('/user-view/:userId', {
+    templateUrl: 'user/user-view.template.html',
+    controller: 'myApp.user.userView',
+    controllerAs: 'userView'
+  })
   .when('/sign-up', {
     templateUrl: 'user/sign-up.template.html',
     controller: 'myApp.user.signUp',
