@@ -47,13 +47,13 @@
     </a>
     <div>
       <div class="item-like">
-        <button class="Button Button--link like-button" type="button" ng-show="false">
+        <button class="Button Button--link like-button" type="button" ng-show="!$root.favorites[postPreview.post.id]" ng-click="postPreview.clickLike()">
           <span class="Button-label">Like</span>
           <i class="icon fa fa-heart-o"></i>
         </button>
       </div>
       <div class="item-like">
-        <button class="Button Button--link like-button" type="button" ng-show="true">
+        <button class="Button Button--link like-button" type="button" ng-show="$root.favorites[postPreview.post.id]" ng-click="postPreview.clickUnlike()">
           <span class="Button-label">Unlike</span>
           <i class="icon fa fa-heart"></i>
         </button>

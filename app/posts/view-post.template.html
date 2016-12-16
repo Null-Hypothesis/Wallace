@@ -28,14 +28,14 @@
             <span class="Button-label">Reply</span>
           </button>
         </div>
-        <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1" ng-show="true">
-          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button">
+        <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1" ng-show="!$root.favorites[viewPost.post.id]">
+          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button" ng-click="viewPost.clickLike()">
             <i class="icon fa fa-fw fa-heart-o"></i>
             <span class="Button-label">Like</span>
           </button>
         </div>
-        <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1" ng-show="false">
-          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button">
+        <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1" ng-show="$root.favorites[viewPost.post.id]">
+          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button" ng-click="viewPost.clickUnlike()">
             <i class="icon fa fa-fw fa-heart "></i>
             <span class="Button-label">Unlike</span>
           </button>

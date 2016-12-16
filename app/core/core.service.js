@@ -4,9 +4,10 @@ angular.module('myApp.core')
 .factory('myApp.core.service', ['$rootScope', '$sce', '$q',
   'myApp.courses.courseTagsService', 'myApp.courses.coursesService',
   'myApp.posts.postTagsService', 'myApp.posts.postsService',
-  'myApp.teachers.teachersService',
+  'myApp.teachers.teachersService', 'myApp.user.favoritesService',
 function($rootScope, $sce, $q,
-  courseTagsService, coursesService, postTagsService, postsService, teachersService) {
+  courseTagsService, coursesService, postTagsService, postsService, teachersService,
+  favoritesService) {
   var service = {};
 
   service.buildIndex = function(arr) {
@@ -57,6 +58,20 @@ function($rootScope, $sce, $q,
     });
   };
 
+  service.loadFavorites = function() {
+    $rootScope.favorites = {};
+    if ($rootScope.user) {
+      return favoritesService.listAllFavorites()
+      .then(function(favorites) {
+        for (var favorite of favorites) {
+          $rootScope.favorites[favorite.post.id] = favorite.id;
+        }
+        return $rootScope.favorites;
+      });
+    }
+    return $q.when($rootScope.favorites);
+  }
+
   service.loadAll = function() {
     var promises = [];
 
@@ -67,6 +82,8 @@ function($rootScope, $sce, $q,
     }));
 
     promises.push(service.loadMeta());
+
+    promises.push(service.loadFavorites());
 
     return $q.all(promises)
     .then(function (args) {

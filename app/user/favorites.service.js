@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('myApp.user')
-.factory('myApp.user.favoritesService', ['$http', '$rootScope',
-function($http, $rootScope) {
+.factory('myApp.user.favoritesService', ['$http', '$rootScope', 'myApp.core.headerService',
+function($http, $rootScope, headerService) {
   var service = {};
 
   service.listAllFavorites = function() {
     return $http({
       method: 'GET',
-      url: apiUrls.user + '/' + $rootScope.user.id + '/favorites',
+      url: apiUrls.users + '/' + $rootScope.user.id + '/favorites',
       headers: headerService.getHeader()
     })
     .then(function successCallback(response) {
@@ -22,7 +22,7 @@ function($http, $rootScope) {
   service.createFavorite = function(data) {
     return $http({
       method: 'POST',
-      url: apiUrls.user + '/' + $rootScope.user.id + '/favorites',
+      url: apiUrls.users + '/' + $rootScope.user.id + '/favorites',
       data: data,
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
@@ -36,14 +36,15 @@ function($http, $rootScope) {
   service.like = function(postId) {
     return service.createFavorite({
       post_id: postId
+    }).then(function (favorite) {
+      $rootScope.favorites[postId] = favorite.id;
     });
   };
 
-  service.deleteFavorite = function(data) {
+  service.deleteFavorite = function(id) {
     return $http({
       method: 'DELETE',
-      url: apiUrls.user + '/' + $rootScope.user.id + '/favorites',
-      data: data,
+      url: apiUrls.users + '/' + $rootScope.user.id + '/favorites/' + id,
       headers: headerService.getHeader()
     }).then(function successCallback(response) {
       $rootScope.$broadcast('Delete favorite finished', response.data);
@@ -53,8 +54,11 @@ function($http, $rootScope) {
     });
   }
 
-  service.unlike = function(data) {
-    //
+  service.unlike = function(postId) {
+    return service.deleteFavorite($rootScope.favorites[postId])
+    .then(function () {
+      delete $rootScope.favorites[postId];
+    });
   };
 
   return service;

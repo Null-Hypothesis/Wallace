@@ -3,13 +3,15 @@
 angular.module('myApp.posts')
 
 .controller('myApp.posts.viewPost', ['$routeParams', '$rootScope', '$sce', '$route', '$anchorScroll', '$location',
-  'myApp.core.service', 'myApp.posts.postsService',
-function($routeParams, $rootScope, $sce, $route, $anchorScroll, $location, coreService, postsService) {
+  'myApp.core.service', 'myApp.posts.postsService', 'myApp.user.favoritesService',
+function($routeParams, $rootScope, $sce, $route, $anchorScroll, $location,
+  coreService, postsService, favoritesService) {
   var self = this;
 
   self.firstCharUpperCase = coreService.firstCharUpperCase;
 
   coreService.loadMeta();
+  coreService.loadFavorites();
 
   self.scrollTo = function(id) {
     $anchorScroll.yOffset = 55;
@@ -35,5 +37,13 @@ function($routeParams, $rootScope, $sce, $route, $anchorScroll, $location, coreS
     .then(function sucessCallback(reply) {
       $route.reload();
     });
+  }
+
+  self.clickLike = function () {
+    favoritesService.like(self.post.id);
+  }
+
+  self.clickUnlike = function () {
+    favoritesService.unlike(self.post.id);
   }
 }]);
