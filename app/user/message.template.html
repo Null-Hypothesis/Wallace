@@ -1,119 +1,32 @@
-<nav-bar></nav-bar>
-
-<header class="Hero TagHero TagHero--colored" style="color: rgb(255, 255, 255); background-color: {{userView.user.name | darkBgColor}};">
-  <div class="container">
-    <div class="containerNarrow">
-		<div class="UserCard-profile">
-		  <h2 class="UserCard-identity">
-		    <div class="AvatarEditor Dropdown UserCard-avatar">
-		      <span class="Avatar " style="background: {{userView.user.name | bgColor}};">{{userView.firstCharUpperCase(userView.user.name)}}</span>
-		      <a class="Dropdown-toggle" data-toggle="dropdown">
-		        <i class="icon fa fa-fw fa-pencil "></i>
-		      </a>
-		      <ul class="Dropdown-menu Menu">
-		        <li class="item-upload">
-		          <button class=" hasIcon" type="button">
-		            <i class="icon fa fa-fw fa-upload Button-icon"></i>
-		            <span class="Button-label">Upload</span></button>
-		        </li>
-		        <li class="item-remove">
-		          <button class=" hasIcon" type="button">
-		            <i class="icon fa fa-fw fa-times Button-icon"></i>
-		            <span class="Button-label">Remove</span></button>
-		        </li>
-		      </ul>
-		    </div>
-		    <span class="username">{{userView.user.name}}</span>
-        <span class="">({{userView.user.email}})</span></h2>
-		  <ul class="UserCard-info">
-		    <li class="item-bio">
-		      <div class="UserBio editable">
-		        <div class="UserBio-content">
-		          <p class="UserBio-placeholder">{{userView.user.description}}</p>
-		         </div>
-		      </div>
-		    </li>
-		    <li class="item-lastSeen">
-		      <span class="UserCard-lastSeen online">
-		        <i class="icon fa fa-fw fa-circle "></i>Online</span>
-		    </li>
-		    <li class="item-joined">Joined a few seconds ago</li></ul>
-		</div>
-    </div>
-  </div>
-</header>
-<div class="container">
-  <nav class="sideNav UserPage-nav">
-    <ul class="affix-top">
-      <li class="item-nav">
-        <div class="ButtonGroup Dropdown dropdown App-titleControl Dropdown--select itemCount3">
-          <!--<button class="Dropdown-toggle Button" data-toggle="dropdown">
-            <span class="Button-label">Posts</span>
-            <i class="icon fa fa-fw fa-sort Button-caret"></i>
-          </button>-->
-          <ul class="Dropdown-menu dropdown-menu ">
-            <li class="item-posts active">
-              <a href="" active="true" class=" hasIcon" type="button">
-                <i class="icon fa fa-fw fa-comment-o Button-icon"></i>
-                <span class="Button-label">Posts<span class="Button-badge">{{userView.posts.length}}</span></span>
-              </a>
-            </li>
-            <li class="item-favourites">
-              <a href="" active="true" class=" hasIcon" type="button">
-                <i class="icon fa fa-fw fa-heart-o Button-icon"></i>
-                <span class="Button-label">Favourites</span>
-              </a>
-            </li>
-            <li class="item-mentions">
-              <a href="" name="mentions" active="false" class=" hasIcon" type="button">
-                <i class="icon fa fa-fw fa-at Button-icon"></i>
-                <span class="Button-label">Mentions</span>
-              </a>
-            </li>
-            <li class="item-messages">
-              <a href="" name="messages" active="false" class=" hasIcon" type="button">
-                <i class="icon fa fa-fw fa-wechat Button-icon"></i>
-                <span class="Button-label">Messages</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </nav>
 <article class="Post CommentPost"> 
-   <div>
+  <div>
     <header class="Post-header">
-     <ul>
-      <li class="item-user">
-       <div class="PostUser">
-        <h3><a href="/u/xiaojudou"><img class="Avatar PostUser-avatar" src="https://async.icpc-camp.org/assets/avatars/db2c0ce4fd6b0172ed912126a515e80f.png" /> <span class="username">xiaojudou</span></a></h3>
-        <ul class="PostUser-badges badges">
-         <li class="item-group1"><span class="Badge Badge--group--Admin " title="" style="background-color: rgb(183, 42, 42);" data-original-title="Admin"><i class="icon fa fa-fw fa-wrench Badge-icon"></i></span></li> 
-        </ul>
-       </div></li> 
-      <li class="item-meta">
-       <div class="Dropdown PostMeta">
-        <a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="2016-11-23T00:13:41+08:00" title="Wednesday, November 23, 2016 12:13 AM" data-humantime="true">24 days ago</time></a>
-        <div class="Dropdown-menu dropdown-menu">
-         <span class="PostMeta-number">Post #8</span> 
-         <time pubdate="true" datetime="2016-11-23T00:13:41+08:00">Wednesday, November 23, 2016 12:13 AM</time>
-         <input class="FormControl PostMeta-permalink" />
-        </div>
-       </div></li> 
-     </ul>
+      <ul>
+        <li class="item-user">
+          <div class="PostUser">
+            <h3>
+              <a href="">
+                <span class="Avatar PostUser-avatar" style="background: gray; color: white;">
+                  X
+                </span>
+                <span class="username">xiaojudou</span>
+              </a>
+            </h3>
+          </div>
+        </li> 
+        <li class="item-meta">
+          <div class="Dropdown PostMeta">
+            <a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="   2016-11-23T00:13:41+08:00" title="Wednesday, November 23, 2016 12:13 AM" data-humantime="true">  24  days ago</time></a>
+        </li> 
+      </ul>
     </header>
     <div class="Post-body">
      <p>你好 想和你交个旁友</p>
     </div>
     <aside class="Post-actions">
      <ul>
-      <li class="item-like"><button class="Button Button--link" type="button"><span class="Button-label">Like</span></button></li> 
-      <li class="item-reply"><button class="Button Button--link" type="button"><span class="Button-label">Reply</span></button></li> 
+      <li class="item-like"><button class="Button Button--link" type="button"><span class="Button-label">Reply</span></button></li> 
      </ul>
     </aside>
-    <footer class="Post-footer">
-     <ul></ul>
-    </footer>
-   </div>
-  </article>
+  </div>
+</article>

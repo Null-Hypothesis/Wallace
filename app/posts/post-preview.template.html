@@ -47,15 +47,19 @@
     </a>
     <div>
       <div class="item-like">
-        <button class="Button Button--link like-button" type="button">
+        <button class="Button Button--link like-button" type="button" ng-show="false">
           <span class="Button-label">Like</span>
           <i class="icon fa fa-heart-o"></i>
         </button>
       </div>
+      <div class="item-like">
+        <button class="Button Button--link like-button" type="button" ng-show="true">
+          <span class="Button-label">Unlike</span>
+          <i class="icon fa fa-heart"></i>
+        </button>
+      </div>
+      </div>
     </div>
-    <!--
-    <span class="DiscussionListItem-count" title="">{{postPreview.post.repliesCount + 1}}</span>
-    -->
     <span class="Discussion-count">
       <i class="icon fa fa-comment-o"></i>
       {{postPreview.post.repliesCount + 1}}

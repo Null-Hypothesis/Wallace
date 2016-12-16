@@ -71,7 +71,7 @@
               </a>
             </li>
             <li class="item-messages">
-              <a href="/#!/message" name="message" active="false" class=" hasIcon" type="button">
+              <a href="" name="message" active="false" class=" hasIcon" type="button">
                 <i class="icon fa fa-fw fa-wechat Button-icon"></i>
                 <span class="Button-label">Message</span>
               </a>
@@ -85,8 +85,7 @@
     <div class="DiscussionList">
       <ul class="DiscussionList-discussions">
         <li ng-repeat="post in userView.posts | orderBy : post.updatedAt : true">
-          <post-preview post-id="post.id">
-          </post-preview>  
+          <post-preview post-id="post.id"></post-preview>  
         </li>
       </ul>
     </div>

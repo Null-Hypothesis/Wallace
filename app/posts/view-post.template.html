@@ -24,8 +24,20 @@
       <li class="item-controls">
         <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1">
           <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button" ng-click="viewPost.scrollTo('reply')">
-            <i class="icon fa fa-fw fa-reply Button-icon"></i>
+            <i class="icon fa fa-fw fa-reply"></i>
             <span class="Button-label">Reply</span>
+          </button>
+        </div>
+        <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1" ng-show="true">
+          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button">
+            <i class="icon fa fa-fw fa-heart-o"></i>
+            <span class="Button-label">Like</span>
+          </button>
+        </div>
+        <div class="ButtonGroup Dropdown dropdown App-primaryControl Dropdown--split itemCount1" ng-show="false">
+          <button class=" SplitDropdown-button Button Button--primary hasIcon" type="button">
+            <i class="icon fa fa-fw fa-heart "></i>
+            <span class="Button-label">Unlike</span>
           </button>
         </div>
       </li>
