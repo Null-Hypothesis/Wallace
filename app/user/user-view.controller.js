@@ -6,8 +6,10 @@ angular.module('myApp.user')
 'myApp.core.service', 'myApp.user.userService',
 function($rootScope, $routeParams, $q, coreService, userService) {
   var self = this;
-  
+
   self.firstCharUpperCase = coreService.firstCharUpperCase;
+
+  self.currentTab = 'posts';
 
   if (!$routeParams.userId) {
     self.userId = $rootScope.user.id;
@@ -30,11 +32,26 @@ function($rootScope, $routeParams, $q, coreService, userService) {
 
   promises.push(coreService.loadAll());
 
-  $q.all(promises)
-  .then(function () {
+  self.updatePosts = function() {
     self.posts = [];
     for (var post of self.user.posts) {
       self.posts.push($rootScope.id2post[post.id]);
     }
+  };
+
+  self.updateFavorites = function() {
+    self.favorites = [];
+    for (var favorite in $rootScope.favorites) {
+      self.favorites.push($rootScope.id2post[favorite]);
+    }
+  }
+
+  $rootScope.$on('Like finished', self.updateFavorites);
+  $rootScope.$on('Unlike finished', self.updateFavorites);
+
+  $q.all(promises)
+  .then(function () {
+    self.updatePosts();
+    self.updateFavorites();
   });
 }]);

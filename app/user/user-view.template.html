@@ -52,22 +52,16 @@
             <i class="icon fa fa-fw fa-sort Button-caret"></i>
           </button>-->
           <ul class="Dropdown-menu dropdown-menu ">
-            <li class="item-posts active">
-              <a href="" active="true" class=" hasIcon" type="button">
+            <li ng-class="{itemPosts: true, active: userView.currentTab === 'posts'}">
+              <a href="" active="true" class=" hasIcon" type="button" ng-click="userView.currentTab='posts'">
                 <i class="icon fa fa-fw fa-comment-o Button-icon"></i>
                 <span class="Button-label">Posts<span class="Button-badge">{{userView.posts.length}}</span></span>
               </a>
             </li>
-            <li class="item-favourites">
-              <a href="" active="true" class=" hasIcon" type="button">
+            <li ng-class="{itemFavorites: true, active: userView.currentTab === 'favorites'}">
+              <a href="" active="false" class=" hasIcon" type="button" ng-click="userView.currentTab='favorites'">
                 <i class="icon fa fa-fw fa-heart-o Button-icon"></i>
-                <span class="Button-label">Favourites</span>
-              </a>
-            </li>
-            <li class="item-mentions">
-              <a href="" name="mentions" active="false" class=" hasIcon" type="button">
-                <i class="icon fa fa-fw fa-at Button-icon"></i>
-                <span class="Button-label">Mentions</span>
+                <span class="Button-label">Favorites<span class="Button-badge">{{userView.favorites.length}}</span></span>
               </a>
             </li>
             <li class="item-messages">
@@ -76,15 +70,28 @@
                 <span class="Button-label">Message</span>
               </a>
             </li>
+            <li class="item-mentions">
+              <a href="" name="mentions" active="false" class=" hasIcon" type="button">
+                <i class="icon fa fa-fw fa-at Button-icon"></i>
+                <span class="Button-label">Mentions</span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>
     </ul>
   </nav>
   <div class="IndexPage-results sideNavOffset">
-    <div class="DiscussionList">
+    <div class="DiscussionList" ng-show="userView.currentTab === 'posts'">
       <ul class="DiscussionList-discussions">
         <li ng-repeat="post in userView.posts | orderBy : post.updatedAt : true">
+          <post-preview post-id="post.id"></post-preview>  
+        </li>
+      </ul>
+    </div>
+    <div class="DiscussionList" ng-show="userView.currentTab === 'favorites'">
+      <ul class="DiscussionList-discussions">
+        <li ng-repeat="post in userView.favorites | orderBy : post.updatedAt : true">
           <post-preview post-id="post.id"></post-preview>  
         </li>
       </ul>

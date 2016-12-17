@@ -38,6 +38,7 @@ function($http, $rootScope, headerService) {
       post_id: postId
     }).then(function (favorite) {
       $rootScope.favorites[postId] = favorite.id;
+      $rootScope.$broadcast('Like finished', favorite);
     });
   };
 
@@ -58,6 +59,7 @@ function($http, $rootScope, headerService) {
     return service.deleteFavorite($rootScope.favorites[postId])
     .then(function () {
       delete $rootScope.favorites[postId];
+      $rootScope.$broadcast('Unlike finished');
     });
   };
 
