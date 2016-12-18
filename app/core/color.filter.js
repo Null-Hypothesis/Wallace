@@ -27,9 +27,9 @@ function(colorService) {
     var index = colorService.getIndex(input);
     var category = colorService.mainColorCategories[index];
     if (colorService.lightColorCategories.includes(category)) {
-      return palette.get('Black', 'text');
+      return palette.get('White', 'Text');
     } else {
-      return palette.get('White', 'text');
+      return palette.get('White', 'Text');
     }
   }
 }]);

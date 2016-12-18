@@ -30,8 +30,8 @@ function($http, $location, $rootScope, $timeout, userService, headerService) {
         $('#sign-in-success-modal').modal('hide');
         $timeout(function() {
           $location.path('/');
-        }, 500);
-      }, 2500);
+        }, 300);
+      }, 1000);
     }, function errorCallback() {
       //
     });

@@ -2,14 +2,15 @@
 
 angular.module('myApp.user')
 
-.controller('myApp.user.userView', ['$rootScope', '$routeParams', '$q',
-'myApp.core.service', 'myApp.user.userService',
-function($rootScope, $routeParams, $q, coreService, userService) {
+.controller('myApp.user.userView', ['$rootScope', '$routeParams', '$q', '$location', '$scope',
+'myApp.core.service', 'myApp.user.userService', 'myApp.user.messagesService',
+function($rootScope, $routeParams, $q, $location, $scope, coreService, userService, messagesService) {
   var self = this;
 
   self.firstCharUpperCase = coreService.firstCharUpperCase;
 
   self.currentTab = 'posts';
+  self.path = $location.path();
 
   if (!$routeParams.userId) {
     self.userId = $rootScope.user.id;
@@ -39,6 +40,8 @@ function($rootScope, $routeParams, $q, coreService, userService) {
     }
   };
 
+  self.messageToId = self.userId;
+
   self.updateFavorites = function() {
     self.favorites = [];
     for (var favorite in $rootScope.favorites) {
@@ -54,4 +57,23 @@ function($rootScope, $routeParams, $q, coreService, userService) {
     self.updatePosts();
     self.updateFavorites();
   });
+
+  coreService.loadMessages()
+  .then(function (messages) {
+    self.messages = messages;
+  });
+
+  self.getMessages = function() {
+    coreService.loadMessages()
+    .then(function (messages) {
+      self.messages = messages;
+    });
+    self.currentTab = 'messages';
+  };
+
+  self.sendMessage = function(messageToId) {
+    self.messageToId = messageToId;
+    $scope.$broadcast('change message to id', messageToId);
+    $('#send_message').modal('show');
+  }
 }]);

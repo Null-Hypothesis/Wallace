@@ -17,8 +17,8 @@ function($rootScope, $http, $location, $timeout, userService, headerService) {
       $('#log-out-modal').modal('hide');
       $timeout(function() {
         $location.path('/');
-      }, 500);
-    }, 2500);
+      }, 300);
+    }, 1000);
   }, function errorCallback() {
     //
   });

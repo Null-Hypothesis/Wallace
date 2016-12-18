@@ -81,6 +81,10 @@
   bottom: 20px;
 }
 
+.Post:after {
+  display: none;
+}
+
 .limit-line-text {
   overflow: hidden;
   text-overflow: ellipsis;

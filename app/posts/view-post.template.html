@@ -1,13 +1,13 @@
 <nav-bar></nav-bar>
 
-<header class="Hero TagHero TagHero--colored" style="color: rgb(255, 255, 255); background-color: rgb(155, 163, 104);">
+<header class="Hero TagHero TagHero--colored" style="background:{{viewPost.post.id | bgColor}}; color:{{viewPost.post.id | textColor}};">
   <div class="container">
     <div class="containerNarrow">
       <h4 class="item-tags" align="center">
         <tag-capsules id2tag="$root.id2courseTag" ids="$root.id2course[viewPost.post.courseId].courseTagIds"></tag-capsules>
         <span class="TagLabel-text">{{$root.id2course[viewPost.post.courseId].name}}</span>  
       </h4>
-      <h2 class="Hero-title" align="center">
+      <h2 class="Hero-title" align="center" style="color:{{viewPost.post.id | textColor}};">
         {{viewPost.post.title}}
       </h2>
       <h4 class="item-tags" align="center">
@@ -86,7 +86,7 @@
                 <li class="item-user">
                   <div class="PostUser">
                     <h3>
-                      <a href="">
+                      <a href="#!/user-view/{{viewPost.post.user.id}}">
                         <span class="Avatar PostUser-avatar" style="background: {{viewPost.post.user.name | bgColor}}; color:{{viewPost.post.user.name | textColor}};">
                           {{viewPost.firstCharUpperCase(viewPost.post.user.name)}}
                         </span>
@@ -158,7 +158,7 @@
                         <img class="Avatar PostUser-avatar" src="https://async.icpc-camp.org/assets/avatars/2878dfb7b5a544d5b85051494be38948.png">
                         <span class="username">zimpha</span>
                       </a>-->
-                      <a href="">
+                      <a href="#!/user-view/{{reply.user.id}}">
                         <span class="Avatar PostUser-avatar" style="background: {{reply.user.name | bgColor}}; color:{{reply.user.name | textColor}};">
                           {{viewPost.firstCharUpperCase(reply.user.name)}}
                         </span>

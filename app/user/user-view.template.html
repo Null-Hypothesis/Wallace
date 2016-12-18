@@ -58,16 +58,22 @@
                 <span class="Button-label">Posts<span class="Button-badge">{{userView.posts.length}}</span></span>
               </a>
             </li>
-            <li ng-class="{itemFavorites: true, active: userView.currentTab === 'favorites'}">
+            <li ng-class="{itemFavorites: true, active: userView.currentTab === 'favorites'}" ng-show="userView.isSelf">
               <a href="" active="false" class=" hasIcon" type="button" ng-click="userView.currentTab='favorites'">
                 <i class="icon fa fa-fw fa-heart-o Button-icon"></i>
                 <span class="Button-label">Favorites<span class="Button-badge">{{userView.favorites.length}}</span></span>
               </a>
             </li>
-            <li class="item-messages">
-              <a href="" name="message" active="false" class=" hasIcon" type="button">
+            <li ng-class="{itemMessages: true, active: userView.currentTab === 'messages'}" ng-show="userView.isSelf">
+              <a href="" name="message" active="false" class=" hasIcon" type="button" ng-click="userView.getMessages()">
                 <i class="icon fa fa-fw fa-wechat Button-icon"></i>
-                <span class="Button-label">Message</span>
+                <span class="Button-label">Messages<span class="Button-badge">{{userView.messages.length}}</span></span>
+              </a>
+            </li>
+            <li class="item-message-to" ng-show="!userView.isSelf">
+              <a itemclassname="App-primaryControl" href="{{userView.path}}/#send_message" data-toggle='modal' name="message-to-button" active="false" class=" hasIcon" type="button">
+                <i class="icon fa fa-fw fa-wechat Button-icon"></i>
+                <span class="Button-label">Send Message</span>
               </a>
             </li>
             <li class="item-mentions">
@@ -96,5 +102,14 @@
         </li>
       </ul>
     </div>
+    <div class="DiscussionList" ng-show="userView.currentTab === 'messages'">
+      <ul class="DiscussionList-discussions">
+        <li ng-repeat="message in userView.messages | orderBy : message.updatedAt : true">
+          <message message-id="message.id" send-message="userView.sendMessage"></message>  
+        </li>
+      </ul>
+    </div>
   </div>
-  
+</div>
+
+<message-to user-id="userView.messageToId" get-messages="userView.getMessages"></message-to>

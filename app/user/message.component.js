@@ -7,6 +7,7 @@ angular.module('myApp.user')
   controller: 'myApp.user.message',
   controllerAs: 'message',
   bindings: {
-    replyId: '<'
+    messageId: '<',
+    sendMessage: '<'
   }
 });

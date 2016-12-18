@@ -4,28 +4,47 @@
       <ul>
         <li class="item-user">
           <div class="PostUser">
-            <h3>
-              <a href="">
-                <span class="Avatar PostUser-avatar" style="background: gray; color: white;">
-                  X
+            <h3 ng-show="message.fromOthers">
+              <a href="#!/user-view/{{message.message.from_user.id}}">
+                <span class="Avatar PostUser-avatar" style="background: {{message.message.from_user.name | bgColor}}; color:{{message.message.from_user.name | textColor}};">
+                  {{message.firstCharUpperCase(message.message.from_user.name)}}
                 </span>
-                <span class="username">xiaojudou</span>
+                <span>From: </span>
+                <span class="username">{{message.message.from_user.name}}</span>
+              </a>
+            </h3>
+            <h3 ng-show="!message.fromOthers">
+              <a href="#!/user-view/{{message.message.to_user.id}}">
+                <span class="Avatar PostUser-avatar" style="background: {{message.message.to_user.name | bgColor}}; color:{{message.message.to_user.name | textColor}};">
+                  {{message.firstCharUpperCase(message.message.to_user.name)}}
+                </span>
+                <span>To: </span>
+                <span class="username">{{message.message.to_user.name}}</span>
               </a>
             </h3>
           </div>
         </li> 
         <li class="item-meta">
           <div class="Dropdown PostMeta">
-            <a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="   2016-11-23T00:13:41+08:00" title="Wednesday, November 23, 2016 12:13 AM" data-humantime="true">  24  days ago</time></a>
+            <a class="Dropdown-toggle" data-toggle="dropdown"><time pubdate="true" datetime="{{message.message.updated_at}}" title="{{message.message.updated_at | date}}" data-humantime="true">{{message.message.updated_at | date}}</time></a>
         </li> 
       </ul>
     </header>
     <div class="Post-body">
-     <p>你好 想和你交个旁友</p>
+     <p ng-bind-html="message.renderHtml(message.message.content)"></p>
     </div>
     <aside class="Post-actions">
      <ul>
-      <li class="item-like"><button class="Button Button--link" type="button"><span class="Button-label">Reply</span></button></li> 
+      <li class="item-like" ng-show="message.fromOthers">
+        <button class="Button Button--link" type="button" ng-click="message.send(message.message.from_user.id)">
+          <span class="Button-label">Reply</span>
+        </button>
+      </li>
+      <li class="item-like" ng-show="!message.fromOthers">
+        <button class="Button Button--link" type="button" ng-click="message.send(message.message.to_user.id)">
+          <span class="Button-label">Send Again</span>
+        </button>
+      </li> 
      </ul>
     </aside>
   </div>

@@ -5,9 +5,10 @@ angular.module('myApp.core')
   'myApp.courses.courseTagsService', 'myApp.courses.coursesService',
   'myApp.posts.postTagsService', 'myApp.posts.postsService',
   'myApp.teachers.teachersService', 'myApp.user.favoritesService',
+  'myApp.user.messagesService',
 function($rootScope, $sce, $q,
   courseTagsService, coursesService, postTagsService, postsService, teachersService,
-  favoritesService) {
+  favoritesService, messagesService) {
   var service = {};
 
   service.buildIndex = function(arr) {
@@ -90,6 +91,15 @@ function($rootScope, $sce, $q,
       $rootScope.$broadcast('All loaded');
     });
   };
+
+  service.loadMessages = function() {
+    return messagesService.listAllMessages()
+    .then(function (messages) {
+      $rootScope.messages = messages;
+      $rootScope.id2message = service.buildIndex(messages);
+      return messages;
+    });
+  }
 
   service.renderHtml = function(htmlCode) {
     return $sce.trustAsHtml(htmlCode);
