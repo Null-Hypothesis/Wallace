@@ -6,7 +6,7 @@ function(colorService) {
   return function(input) {
     var index = colorService.getIndex(input);
     var category = colorService.mainColorCategories[index];
-    return palette.get(category, '500');
+    return palette.get(category, '400');
   }
 }]);
 

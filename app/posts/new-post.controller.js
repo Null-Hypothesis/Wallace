@@ -45,6 +45,7 @@ function($rootScope, $q, postsService, coreService, postTagsService) {
       return self.post;
     })
     .then(function(post) {
+      console.log(post);
       return postsService.createPost(post);
     })
     .then(function(post) {
