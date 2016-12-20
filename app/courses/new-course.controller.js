@@ -9,8 +9,10 @@ function($rootScope, $q, coursesService, coreService, teachersService, courseTag
   var self = this;
 
   self.course = {};
-  self.teachers = $rootScope.teachers;
-  self.courseTags = $rootScope.courseTags;
+  $rootScope.$on('Meta loaded', function() {
+    self.teachers = $rootScope.teachers;
+    self.courseTags = $rootScope.courseTags;
+  });
   self.selectedTeacher = {};
   self.selectedCourseTags = [];
 
@@ -53,7 +55,6 @@ function($rootScope, $q, coursesService, coreService, teachersService, courseTag
       return coursesService.createCourse(course);
     })
     .then(function(course) {
-      coreService.loadMeta();
       $('#create_course').modal('hide');
       $('#create_course_success').modal('show');
       self.course = {};
@@ -61,6 +62,9 @@ function($rootScope, $q, coursesService, coreService, teachersService, courseTag
       self.courseTags = $rootScope.courseTags;
       self.selectedTeacher = {};
       self.selectedCourseTags = [];
+      coreService.loadMeta().then(function() {
+        $rootScope.$broadcast('New course added.');
+      })
     });
   }
 }]);

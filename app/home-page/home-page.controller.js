@@ -49,7 +49,34 @@ function ($rootScope, $routeParams, coreService) {
       post.courseName = $rootScope.id2course[post.courseId].name;
     }
   });
-  
+
+  $rootScope.$on('New course added.', function () {
+    self.categories = $rootScope.courseTags;
+
+    self.freshOtherCategoryCourses();
+    for (var category of $rootScope.courseTags) {
+      self.freshCategoryCourses(category);
+    }
+  });
+
+  $rootScope.$on('New post added.', function () {
+    if (!self.currentCategory) {
+      self.posts = $rootScope.posts;
+    } else if (!self.currentCourse) {
+      if (self.currentCategory > 0) {
+        var category = self.currentCategory;
+        self.freshCategoryPosts(category);
+      } else {
+        self.freshOtherCategoryPosts();
+      }
+    } else {
+      self.freshCoursePosts(self.currentCourse);
+    }
+
+    for (var post of $rootScope.posts) {
+      post.courseName = $rootScope.id2course[post.courseId].name;
+    }
+  });
 
   self.isCategory = function(category) {
     return self.currentCategory && (category.id === self.currentCategory.id);

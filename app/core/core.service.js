@@ -73,14 +73,18 @@ function($rootScope, $sce, $q,
     return $q.when($rootScope.favorites);
   }
 
-  service.loadAll = function() {
-    var promises = [];
-
-    promises.push(postsService.listAllPosts()
+  service.loadPosts = function() {
+    return postsService.listAllPosts()
     .then(function(posts) {
       $rootScope.posts = posts;
       $rootScope.id2post = service.buildIndex(posts);
-    }));
+    });
+  }
+
+  service.loadAll = function() {
+    var promises = [];
+
+    promises.push(service.loadPosts());
 
     promises.push(service.loadMeta());
 

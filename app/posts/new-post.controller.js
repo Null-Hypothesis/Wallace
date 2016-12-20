@@ -9,7 +9,9 @@ function($rootScope, $q, postsService, coreService, postTagsService) {
 
   self.post = {};
   self.selectedPostTags = [];
-  self.postTags = $rootScope.postTags;
+  $rootScope.$on('Meta loaded', function() {
+    self.postTags = $rootScope.postTags;
+  });
   self.post.stars = '';
 
   self.tagTransform = function(name) {
@@ -46,13 +48,15 @@ function($rootScope, $q, postsService, coreService, postTagsService) {
       return postsService.createPost(post);
     })
     .then(function(post) {
-      coreService.loadAll();
       $('#create_post').modal('hide');
       $('#create_post_success').modal('show');
       self.post = {};
       self.selectedPostTags = [];
       self.postTags = $rootScope.postTags;
       self.post.stars = '';
+      coreService.loadAll().then(function() {
+        $rootScope.$broadcast('New post added.');
+      });
     });
   }
 }]);
