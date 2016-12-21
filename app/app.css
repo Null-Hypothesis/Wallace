@@ -195,6 +195,10 @@
     padding: 0px 13px 0px 0px;
   }
 
+  .Private-Message {
+    margin: 5px;
+  }
+
   .limit-line-text {
     overflow: hidden;
     text-overflow: ellipsis;
